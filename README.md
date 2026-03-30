@@ -1,2 +1,19 @@
 # Labyrinth-of-Nosmouth
-Text based adventure game where you explore a mase
+Text based adventure game where you explore a maze
+============================================================
+PROJECT OVERVIEW:
+
+
+============================================================
+SETUP INSTRUCTIONS:
+
+
+============================================================
+TEAM MEMBERS:
+
+
+============================================================
+LINK TO UML:
+
+
+============================================================
