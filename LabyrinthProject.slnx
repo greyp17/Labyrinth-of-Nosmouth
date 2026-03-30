@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="LabyrinthProject.vcxproj" Id="04e40784-32d2-4577-96ec-85c01262a8ed" />
+</Solution>
