@@ -7,7 +7,7 @@ The player will use text commands to make decisions. Thngs like movement and act
 to prevent unintended behavior. The game will feature a combat system, and item system, and multiple different enemy types.
 
 SETUP INSTRUCTIONS:
-
+// what does this mean even?
 
 TEAM MEMBERS:
 Hunter Angeloff
