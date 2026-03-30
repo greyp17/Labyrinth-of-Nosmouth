@@ -102,6 +102,7 @@ int MAP::NewGame() {
 	return 0;
 }
 
+// Added a randomInt function from RandomUtil if we do this.
 int MAP::Random_Gen() {
 		std::random_device rd;
 		std::default_random_engine engine{rd()};

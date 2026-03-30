@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="MainStart.cpp" />
     <ClCompile Include="MAP.cpp" />
+    <ClCompile Include="RandomUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MAP.h" />
+    <ClInclude Include="RandomUtil.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
