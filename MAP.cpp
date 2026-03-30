@@ -72,19 +72,33 @@ int MAP::RunGame() {
 int MAP::NewGame() {
     std::cout << "Game Over!" << "\n";
 
-	int Play_again;
-	std::cout << "play again? (0(no)/1(yes))" << "\n";
-	std::cin >> Play_again;
+	int Play_again = -1;
 
-	if (Play_again == 1) {
-		std::cout << "Please select a difficulty level Easy(1) Medium(2) Hard(3):" << "\n";
-		std::cin >> this->difficulty;
-		this->RunGame();
+	//Garrison did exception handling only
+	while (Play_again != 0 && Play_again != 1) {
+		try{
+			std::cout << "play again? (0(no)/1(yes))" << "\n";
+			std::cin >> Play_again;
+
+			if (Play_again == 1) {
+				std::cout << "Please select a difficulty level Easy(1) Medium(2) Hard(3):" << "\n";
+				std::cin >> this->difficulty;
+				this->RunGame();
+			}
+			else if (Play_again == 0) {
+				std::cout << "Thanks for playing!" << "\n";
+				this->Game_Run = 1;
+			}
+			else {
+				throw std::out_of_range("Invalid input. Please enter 0 or 1.");
+			}
+		}
+		catch (const std::exception& e){
+			std::cout << "Error: " << e.what() << "\n";
+			Play_again = -1; // resets
+		}
 	}
-	else if (Play_again == 0) {
-		std::cout << "Thanks for playing!" << "\n";
-		this->Game_Run = 1;
-	}
+	//end Garrison work
 	return 0;
 }
 
