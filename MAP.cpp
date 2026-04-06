@@ -1,5 +1,6 @@
 //grey code starts here
 #include "MAP.h"
+#include "TestFunctions.h"
 #include <iostream>
 #include <vector>
 #include <random>
@@ -77,6 +78,18 @@ int MAP::NewGame() {
 	//Garrison did exception handling only
 	while (Play_again != 0 && Play_again != 1) {
 		try{
+			
+			int testFunction{0};
+			// Temporary testing...
+			std::cout << "Would you like to test functions? (0(no)/1(yes))\n";
+			std::cin >> testFunction;
+
+			if (testFunction == 1) {
+
+				TestFunctions();
+
+			}
+			
 			std::cout << "play again? (0(no)/1(yes))" << "\n";
 			std::cin >> Play_again;
 
