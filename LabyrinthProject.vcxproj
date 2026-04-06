@@ -131,14 +131,17 @@
     <ClCompile Include="ITEM.cpp" />
     <ClCompile Include="MainStart.cpp" />
     <ClCompile Include="MAP.cpp" />
+    <ClCompile Include="Maze.cpp" />
     <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="RandomUtil.cpp" />
     <ClCompile Include="TestFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ENEMY.h" />
+    <ClInclude Include="Global.h" />
     <ClInclude Include="ITEM.h" />
     <ClInclude Include="MAP.h" />
+    <ClInclude Include="Maze.h" />
     <ClInclude Include="PLAYER.h" />
     <ClInclude Include="RandomUtil.h" />
     <ClInclude Include="TestFunctions.h" />
