@@ -13,12 +13,7 @@ int MAP::RunGame() {
 			this->playerHP = 100;
 			while (this->playerHP > 0 && this->Game_Run == 0) {
 				// Game loop for Easy difficulty
-				for (int width = 0; width < EasyHeight; width++) {
-					for (int height = 0; height < EasyWidth; height++) {
-						std::cout << RenderEasyMap[width][height];
-					}
-					std::cout << "\n";
-				}
+				Print_Map(RenderEasyMap, EasyHeight, EasyWidth);
 				this->playerHP -= 100;
 				if (this->playerHP <= 0) {
 					this->NewGame();
@@ -31,12 +26,7 @@ int MAP::RunGame() {
 			this->playerHP = 100;
 			while (this->playerHP > 0 && this->Game_Run == 0) {
 				// Game loop for Medium difficulty
-				for (int width = 0; width < MediumHeight; width++) {
-					for (int height = 0; height < MediumWidth; height++) {
-						std::cout << RenderMediumMap[width][height];
-					}
-					std::cout << "\n";
-				}
+				Print_Map(RenderMediumMap, MediumHeight, MediumWidth);
 				this->playerHP -= 100;
 				if (this->playerHP <= 0) {
 					this->NewGame();
@@ -49,12 +39,7 @@ int MAP::RunGame() {
 			this->playerHP = 100;
 			while (this->playerHP > 0 && this->Game_Run == 0) {
 				// Game loop for Hard difficulty
-				for (int width = 0; width < HardHeight; width++) {
-					for (int height = 0; height < HardWidth; height++) {
-						std::cout << RenderHardMap[width][height];
-					}
-					std::cout << "\n";
-				}
+				Print_Map(RenderHardMap, HardHeight, HardWidth);
 				this->playerHP -= 100;
 				if (this->playerHP <= 0) {
 					this->NewGame();
@@ -118,7 +103,7 @@ int MAP::NewGame() {
 	return 0;
 }
 
-// Added a randomInt function from RandomUtil if we do this.
+// Function to randomly generate the map.
 int MAP::Random_Gen(int mapArray[][25], int mapHeight, int mapWidth) {
 		
 	for (int width = 0; width < mapHeight; width++) {
@@ -130,4 +115,17 @@ int MAP::Random_Gen(int mapArray[][25], int mapHeight, int mapWidth) {
 	return 1;
 
 }
-//grey code ends here
+
+// Function to print map.
+int MAP::Print_Map(int mapArray[][25], int mapHeight, int mapWidth) {
+	
+	for (int width = 0; width < mapHeight; width++) {
+		for (int height = 0; height < mapWidth; height++) {
+			std::cout << mapArray[width][height];
+		}
+		std::cout << "\n";
+	}
+
+	return 1;
+
+}
