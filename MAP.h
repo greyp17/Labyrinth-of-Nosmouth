@@ -6,7 +6,7 @@
 
 class MAP {
 public:
-    int Random_Gen();
+    int Random_Gen(int mapArray[][25], int mapHeight, int mapWidth);
     int difficulty = 1;
     int RunGame();
 	int Play_again = 0;

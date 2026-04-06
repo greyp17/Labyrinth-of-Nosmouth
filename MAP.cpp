@@ -3,12 +3,13 @@
 #include "TestFunctions.h"
 #include <iostream>
 #include <vector>
-#include <random>
+#include "RandomUtil.h"
 
 int MAP::RunGame() {
     while (this->Game_Run == 0) {
 		if (this->difficulty == 1) {
-			int RenderEasyMap[EasyHeight][EasyWidth] = {this->Random_Gen()};
+			int RenderEasyMap[EasyWidth][EasyHeight];
+			Random_Gen(RenderEasyMap, EasyHeight, EasyWidth);
 			this->playerHP = 100;
 			while (this->playerHP > 0 && this->Game_Run == 0) {
 				// Game loop for Easy difficulty
@@ -25,7 +26,8 @@ int MAP::RunGame() {
 			}
 		}
 		else if (this->difficulty == 2) {
-			int RenderMediumMap[MediumHeight][MediumWidth] = { 0 };
+			int RenderMediumMap[MediumWidth][MediumHeight] = { 0 };
+			Random_Gen(RenderMediumMap, MediumHeight, MediumWidth);
 			this->playerHP = 100;
 			while (this->playerHP > 0 && this->Game_Run == 0) {
 				// Game loop for Medium difficulty
@@ -42,7 +44,8 @@ int MAP::RunGame() {
 			}
 		}
 		else if (this->difficulty == 3) {
-			int RenderHardMap[HardHeight][HardWidth] = { 0 };
+			int RenderHardMap[HardWidth][HardHeight] = { 0 };
+			Random_Gen(RenderHardMap, HardHeight, HardWidth);
 			this->playerHP = 100;
 			while (this->playerHP > 0 && this->Game_Run == 0) {
 				// Game loop for Hard difficulty
@@ -116,11 +119,15 @@ int MAP::NewGame() {
 }
 
 // Added a randomInt function from RandomUtil if we do this.
-int MAP::Random_Gen() {
-		std::random_device rd;
-		std::default_random_engine engine{rd()};
-		std::uniform_int_distribution<> maze{0,1};
-		int tile = maze(engine);
-		return 0;
+int MAP::Random_Gen(int mapArray[][25], int mapHeight, int mapWidth) {
+		
+	for (int width = 0; width < mapHeight; width++) {
+		for (int height = 0; height < mapWidth; height++) {
+			mapArray[width][height] = randomInt(0,1);
+		}
+	}
+
+	return 1;
+
 }
 //grey code ends here
