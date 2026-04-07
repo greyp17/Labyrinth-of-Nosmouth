@@ -1,8 +1,11 @@
 //Grey code starts here
 #include <iostream>
 #include "MAP.h"
-MAP Game;
+#include "Maze.h"
 int difficulty;
+MAP Game;
+Maze  Random_Gen;
+Maze Print_Map;
 
 
 int main() {

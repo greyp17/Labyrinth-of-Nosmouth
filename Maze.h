@@ -7,7 +7,8 @@
 
 class Maze {
 public:
-    int mazeGen();
+    int Random_Gen(int mapArray[][25], int mapHeight, int mapWidth);
+    int Print_Map(int mapArray[][25], int mapHeight, int mapWidth);
 private:
 
     static constexpr int EasyHeight = 25;

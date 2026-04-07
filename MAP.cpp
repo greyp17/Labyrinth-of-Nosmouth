@@ -4,55 +4,55 @@
 #include <iostream>
 #include <vector>
 #include "RandomUtil.h"
+#include "Global.h"
+#include "Maze.h"
+
 
 int MAP::RunGame() {
-    while (this->Game_Run == 0) {
-		if (this->difficulty == 1) {
+    while (Game_Run == 0) {
+		Maze maze;
+		if (difficulty == 1) {
 			int RenderEasyMap[EasyWidth][EasyHeight];
-			Random_Gen(RenderEasyMap, EasyHeight, EasyWidth);
+			maze.Random_Gen( RenderEasyMap, EasyHeight, EasyWidth);
 			this->playerHP = 100;
-			while (this->playerHP > 0 && this->Game_Run == 0) {
+			while (this->playerHP > 0 && Game_Run == 0) {
 				// Game loop for Easy difficulty
-				Print_Map(RenderEasyMap, EasyHeight, EasyWidth);
+				 maze.Print_Map( RenderEasyMap, EasyHeight, EasyWidth);
 				this->playerHP -= 100;
 				if (this->playerHP <= 0) {
-					this->NewGame();
+					NewGame();
 				}
 			}
 		}
-		else if (this->difficulty == 2) {
+		else if (difficulty == 2) {
 			int RenderMediumMap[MediumWidth][MediumHeight] = { 0 };
-			Random_Gen(RenderMediumMap, MediumHeight, MediumWidth);
+			maze.Random_Gen(RenderMediumMap, MediumHeight, MediumWidth);
 			this->playerHP = 100;
-			while (this->playerHP > 0 && this->Game_Run == 0) {
+			while (this->playerHP > 0 && Game_Run == 0) {
 				// Game loop for Medium difficulty
-				Print_Map(RenderMediumMap, MediumHeight, MediumWidth);
+				maze.Print_Map( RenderMediumMap,  MediumHeight,  MediumWidth);
 				this->playerHP -= 100;
 				if (this->playerHP <= 0) {
-					this->NewGame();
+					NewGame();
 				}
 			}
 		}
-		else if (this->difficulty == 3) {
+		else if (difficulty == 3) {
 			int RenderHardMap[HardWidth][HardHeight] = { 0 };
-			Random_Gen(RenderHardMap, HardHeight, HardWidth);
+			maze.Random_Gen(RenderHardMap, HardHeight, HardWidth);
 			this->playerHP = 100;
-			while (this->playerHP > 0 && this->Game_Run == 0) {
+			while (this->playerHP > 0 && Game_Run == 0) {
 				// Game loop for Hard difficulty
-				Print_Map(RenderHardMap, HardHeight, HardWidth);
+				 maze.Print_Map( RenderHardMap,  HardHeight, HardWidth);
 				this->playerHP -= 100;
 				if (this->playerHP <= 0) {
-					this->NewGame();
+					NewGame();
 				}
 			}
-		}
-		else if (this->Game_Run == 1) {
-			std::cout << "Bye Bye" << "\n";
-			return 0;
 		}
 		else {
 			std::cout << "pick a new difficulty Easy(1) Medium(2) Hard(3)\n";
-			std::cin >> this->difficulty;
+			std::cin >> difficulty;
 		}
 	}
 	return 0;
@@ -83,12 +83,12 @@ int MAP::NewGame() {
 
 			if (Play_again == 1) {
 				std::cout << "Please select a difficulty level Easy(1) Medium(2) Hard(3):" << "\n";
-				std::cin >> this->difficulty;
-				this->RunGame();
+				std::cin >> difficulty;
+				RunGame();
 			}
 			else if (Play_again == 0) {
 				std::cout << "Thanks for playing!" << "\n";
-				this->Game_Run = 1;
+				Game_Run = 1;
 			}
 			else {
 				throw std::out_of_range("Invalid input. Please enter 0 or 1.");
@@ -103,29 +103,3 @@ int MAP::NewGame() {
 	return 0;
 }
 
-// Function to randomly generate the map.
-int MAP::Random_Gen(int mapArray[][25], int mapHeight, int mapWidth) {
-		
-	for (int width = 0; width < mapHeight; width++) {
-		for (int height = 0; height < mapWidth; height++) {
-			mapArray[width][height] = randomInt(0,1);
-		}
-	}
-
-	return 1;
-
-}
-
-// Function to print map.
-int MAP::Print_Map(int mapArray[][25], int mapHeight, int mapWidth) {
-	
-	for (int width = 0; width < mapHeight; width++) {
-		for (int height = 0; height < mapWidth; height++) {
-			std::cout << mapArray[width][height];
-		}
-		std::cout << "\n";
-	}
-
-	return 1;
-
-}
