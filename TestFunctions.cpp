@@ -20,8 +20,19 @@ int TestFunctions() {
 		Player player(playerName);
 		std::cout << "Player name is: " << player.getPlayerName() << "\n";
 		std::cout << "Player position is: (" << player.getPlayerX() << ", " << player.getPlayerY() << ")\n";
+		std::cout << "Player health is: " << player.getPlayerHP() << "\n";
+		std::cout << "How much damage do you deal to player? ";
+		std::cin >> userAnswer;
+		player.takeDamage(userAnswer);
+		std::cout << "Current HP: " << player.getPlayerHP() << "\n";
+		std::cout << "How much heal do you deal to player? ";
+		std::cin >> userAnswer;
+		player.healHealth(userAnswer);
+		std::cout << "Current HP: " << player.getPlayerHP() << "\n";
+		std::cout << "Player test complete.\n";
 
 	}
+
 	std::cout << "Would you like to test Item? (0(no)/1(yes))\n";
 	std::cin >> userAnswer;
 	if (userAnswer == 1) {

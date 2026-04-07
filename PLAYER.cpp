@@ -8,6 +8,18 @@ Player::Player(std::string playerName) {
 
 }
 
+//Member Functions
+void Player::takeDamage(int damage) {
+
+	health -= damage;
+
+}
+void Player::healHealth(int heal) {
+
+	health += heal;
+
+}
+
 //Position Getters
 int Player::getPlayerX() {
 
@@ -24,5 +36,12 @@ int Player::getPlayerY() {
 std::string Player::getPlayerName() {
 
 	return name;
+
+}
+
+//HP Getter
+int Player::getPlayerHP() {
+
+	return health;
 
 }

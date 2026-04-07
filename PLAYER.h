@@ -9,7 +9,7 @@ private:
 	std::string name;
 	int xPosition{0};
 	int yPosition{0};
-	// Need to add playerhealth
+	int health{100};
 	// Need to add ITEMS class before setting up the vector for inventory...
 
 public:
@@ -19,6 +19,8 @@ public:
 
 	//Member Functions
 	//Need to add takedamage
+	void takeDamage(int damage);
+	void healHealth(int heal);
 	//Need to add stuff for inventory vector
 
 
@@ -26,5 +28,6 @@ public:
 	int getPlayerX();
 	int getPlayerY();
 	std::string getPlayerName();
-	// need to add getter for playerhealth
+	int getPlayerHP();
+	
 };
