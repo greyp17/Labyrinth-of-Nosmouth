@@ -127,7 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ARMOR.cpp" />
     <ClCompile Include="ENEMY.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="ITEM.cpp" />
     <ClCompile Include="MainStart.cpp" />
     <ClCompile Include="MAP.cpp" />
@@ -138,8 +140,10 @@
     <ClCompile Include="WEAPON.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ARMOR.h" />
     <ClInclude Include="ENEMY.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="ITEM.h" />
     <ClInclude Include="MAP.h" />
     <ClInclude Include="Maze.h" />

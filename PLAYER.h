@@ -18,7 +18,6 @@ public:
 	Player(std::string playerName);
 
 	//Member Functions
-	//Need to add takedamage
 	void takeDamage(int damage);
 	void healHealth(int heal);
 	//Need to add stuff for inventory vector

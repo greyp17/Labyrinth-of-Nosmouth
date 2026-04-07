@@ -3,6 +3,7 @@
 #include "PLAYER.h"
 #include "ITEM.h"
 #include "WEAPON.h"
+#include "Inventory.h"
 
 int TestFunctions() {
 
@@ -48,14 +49,21 @@ int TestFunctions() {
 
 	}
 
-	std::cout << "Would you like to test (testname)? (0(no)/1(yes))\n";
+	std::cout << "Would you like to test inventory? (0(no)/1(yes))\n";
 	std::cin >> userAnswer;
 	if (userAnswer == 1) {
 
 		//function call here
-		std::cout << "Third test function call\n";
+		std::cout << "Testing inventory functions...\n";
+		std::string input;
+		std::cout << "Enter 'inventory' to access inventory: ";
+		std::cin >> input;
+		if (input == "inventory") {
 
+			std::cout << "Successfully accessing inventory...\n";
+			inventoryInterface();
 
+		}
 
 	}
 

@@ -4,7 +4,8 @@
 class Weapon : public Item {
 
 	private:
-
+		
+		std::string type = "weapon";
 		int damage;
 		// add attack speed maybe for variance of weapons?
 
@@ -17,5 +18,6 @@ class Weapon : public Item {
 
 		//Getters
 		int getWeaponDmg();
+		std::string getType();
 
 };

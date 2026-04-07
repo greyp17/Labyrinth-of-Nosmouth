@@ -7,9 +7,15 @@ Weapon::Weapon(std::string itemName, int weaponDmg) : Item(itemName) {
 
 }
 
-//Position Getters
+//Getters
 int Weapon::getWeaponDmg() {
 
 	return damage;
+
+}
+
+std::string Weapon::getType() {
+
+	return type;
 
 }
