@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "PLAYER.h"
+#include "ITEM.h"
+#include "WEAPON.h"
 
 int TestFunctions() {
 
@@ -20,12 +22,29 @@ int TestFunctions() {
 		std::cout << "Player position is: (" << player.getPlayerX() << ", " << player.getPlayerY() << ")\n";
 
 	}
+	std::cout << "Would you like to test Item? (0(no)/1(yes))\n";
+	std::cin >> userAnswer;
+	if (userAnswer == 1) {
+
+		//function call here
+		std::cout << "Testing Item functions...\n";
+		std::cout << "Making a base class item: sword...\n";
+		std::string itemName = "Sword";
+		int weaponDmg = 10;
+		Weapon weapon1(itemName, weaponDmg);
+		std::cout << "Item name is: " << weapon1.getItemName() << "\n";
+		std::cout << "Weapon damage is: " << weapon1.getWeaponDmg() << "\n";
+
+	}
+
 	std::cout << "Would you like to test (testname)? (0(no)/1(yes))\n";
 	std::cin >> userAnswer;
 	if (userAnswer == 1) {
 
 		//function call here
-		std::cout << "Second test function call\n";
+		std::cout << "Third test function call\n";
+
+
 
 	}
 

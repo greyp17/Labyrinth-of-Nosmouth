@@ -135,6 +135,7 @@
     <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="RandomUtil.cpp" />
     <ClCompile Include="TestFunctions.cpp" />
+    <ClCompile Include="WEAPON.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ENEMY.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="PLAYER.h" />
     <ClInclude Include="RandomUtil.h" />
     <ClInclude Include="TestFunctions.h" />
+    <ClInclude Include="WEAPON.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

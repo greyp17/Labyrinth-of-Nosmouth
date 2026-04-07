@@ -1,5 +1,2 @@
-﻿  PLAYER.cpp
-C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\PLAYER.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  TestFunctions.cpp
-  Generating Code...
+﻿  WEAPON.cpp
   LabyrinthProject.vcxproj -> C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\x64\Debug\LabyrinthProject.exe
