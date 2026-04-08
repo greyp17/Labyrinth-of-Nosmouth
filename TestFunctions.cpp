@@ -57,8 +57,8 @@ int TestFunctions() {
 		std::cout << "Testing Item functions...\n";
 		std::cout << "Making a base class item: sword...\n";
 		Weapon weapon1("Sword", 10);
-		std::cout << "Item name is: " << weapon1.getItemName() << "\n";
-		std::cout << "Weapon damage is: " << weapon1.getWeaponDmg() << "\n";
+		std::cout << "Item name is: " << weapon1.getName() << "\n";
+		std::cout << "Weapon damage is: " << weapon1.getDmg() << "\n";
 
 	}
 
@@ -77,6 +77,7 @@ int TestFunctions() {
 			Inventory inv;
 			LoadObjects(inv);
 			inv.interface();
+			std::cout << "Testing remove function... removing item 2...\n";
 			inv.remove(2);
 			inv.interface();
 			

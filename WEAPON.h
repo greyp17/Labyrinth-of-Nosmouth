@@ -17,7 +17,7 @@ class Weapon : public Item {
 		//Member Functions
 
 		//Getters
-		int getWeaponDmg();
+		int getDmg();
 		std::string getType();
 
 };

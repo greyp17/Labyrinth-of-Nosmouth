@@ -8,7 +8,7 @@ Weapon::Weapon(std::string itemName, int weaponDmg) : Item(itemName) {
 }
 
 //Getters
-int Weapon::getWeaponDmg() {
+int Weapon::getDmg() {
 
 	return damage;
 

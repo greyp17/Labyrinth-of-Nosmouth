@@ -8,7 +8,7 @@ Armor::Armor(std::string itemName, int armorDefense) : Item(itemName) {
 }
 
 //Getters
-int Armor::getArmorDefense() {
+int Armor::getDefense() {
 
 	return defense;
 

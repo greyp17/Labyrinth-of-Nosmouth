@@ -16,7 +16,7 @@ public:
 	//Member Functions
 
 	//Getters
-	int getArmorDefense();
+	int getDefense();
 	std::string getType();
 
 };

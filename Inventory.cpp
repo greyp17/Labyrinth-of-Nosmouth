@@ -13,7 +13,7 @@ void Inventory::interface() {
 	for (Item* item : items) {
 		i++;
 		std::cout << "(" << i << ") ";
-		std::cout << item->getItemName() << " ";
+		std::cout << item->getName() << " ";
 
 	}
 

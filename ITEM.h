@@ -15,6 +15,6 @@ class Item {
 		//Member Functions
 
 		//Getters
-		std::string getItemName();
+		std::string getName();
 
 };

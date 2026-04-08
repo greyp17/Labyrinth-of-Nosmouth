@@ -8,7 +8,7 @@ Item::Item(std::string itemName) {
 }
 
 //Position Getters
-std::string Item::getItemName() {
+std::string Item::getName() {
 
 	return name;
 
