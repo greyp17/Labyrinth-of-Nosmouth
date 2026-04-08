@@ -9,7 +9,8 @@ class Inventory {
 		std::vector<Item*> items;
 
 	public:
-
+		
+		void display();
 		void add(Item* item);
 		void remove(int itemNum);
 		void remove(std::string item);
@@ -17,5 +18,6 @@ class Inventory {
 		int size();
 		void clear();
 		int element(std::string itemName);
+		int checkType(std::string input);
 
 };

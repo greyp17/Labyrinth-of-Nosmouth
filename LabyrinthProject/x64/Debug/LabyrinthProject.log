@@ -1,2 +1,3 @@
 ﻿  Inventory.cpp
+C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\Inventory.cpp(180,1): warning C4715: 'Inventory::element': not all control paths return a value
   LabyrinthProject.vcxproj -> C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\x64\Debug\LabyrinthProject.exe

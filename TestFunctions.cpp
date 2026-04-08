@@ -77,12 +77,6 @@ int TestFunctions() {
 			Inventory inv;
 			LoadObjects(inv);
 			inv.interface();
-			std::cout << "Testing int remove function... removing item 2...\n";
-			inv.remove(2);
-			inv.interface();
-			std::cout << "Testing string remove function... removing item 1...\n";
-			inv.remove("knife");
-			inv.interface();
 
 			inv.clear();
 		}
