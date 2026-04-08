@@ -27,10 +27,19 @@ void Inventory::add(Item* item) {
 
 }
 
+// Need to add out of bounds testing and error...
 void Inventory::remove(int itemNum) {
 	itemNum -= 1;
 	delete items[itemNum];
 	items.erase(items.begin() + itemNum);
+
+}
+
+void Inventory::remove(std::string item) {
+
+	int num = element(item);
+	num += 1;
+	remove(num);
 
 }
 
@@ -43,6 +52,23 @@ void Inventory::clear() {
 	}
 
 	items.clear();
+
+}
+
+int Inventory::element(std::string itemName) {
+
+	for (int i{ 0 }; i < items.size(); i++) {
+
+		if ((items[i]->getName()) == itemName) {
+
+			return i;
+
+		}
+
+	}
+
+	std::cout << itemName << "not found.";
+	return -1;
 
 }
 
