@@ -1,6 +1,2 @@
 ﻿  Inventory.cpp
-  MAP.cpp
-  TestFunctions.cpp
-  Generating Code...
-C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\Inventory.cpp(192,1): warning C4715: 'Inventory::element': not all control paths return a value
   LabyrinthProject.vcxproj -> C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\x64\Debug\LabyrinthProject.exe

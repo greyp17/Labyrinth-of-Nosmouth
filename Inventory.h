@@ -13,13 +13,11 @@ class Inventory {
 		void display();
 		void add(Item* item);
 		void remove(int itemNum);
-		void remove(std::string item);
 		void interface();
-		int size();
 		void clear();
 		int element(std::string itemName);
-		int checkType(std::string input);
 		std::string stringLower(std::string input);
+		int processInput(std::string input);
 		
 
 };
