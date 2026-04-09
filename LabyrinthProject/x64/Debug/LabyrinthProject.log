@@ -1,2 +1,4 @@
 ﻿  Inventory.cpp
+C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\Inventory.cpp(28,12): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\Inventory.cpp(82,12): warning C4553: '==': result of expression not used; did you intend '='?
   LabyrinthProject.vcxproj -> C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\x64\Debug\LabyrinthProject.exe

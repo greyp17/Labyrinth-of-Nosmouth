@@ -6,82 +6,86 @@
 #include <algorithm>
 #include <cctype>
 
-// TO DO: more out of bounds checking, make other functions usable, turn interface into a loop....
-//                                                                  currently using recursion which is bad practice.
+// TO DO: more out of bounds checking, make other functions usable
 
 void Inventory::interface() {
 
 	std::string input;
 	int inputNum;
-	display();
-	std::cout << "Commands: Exit, Inspect, Use, Remove\n";
-	std::cin >> input;
-	input = stringLower(input);
+	int invLoop{1};
 
-	if (input == "exit") {
+	while (invLoop == 1) {
 
-		// exit from inventory interface
-		return;
-
-	} 
-	else if (input == "inspect") {
-
-		// display stats of item
-		std::cout << "Which item? ";
+		display();
+		std::cout << "Commands: Exit, Inspect, Use, Remove\n";
 		std::cin >> input;
+		input = stringLower(input);
 
-		// With processInput now have the index for the item.
-		inputNum = processInput(input);
+		if (input == "exit") {
 
-		std::cout << "Displaying stats...\n"; //placeholder
-		interface();
+			// exit from inventory interface
+			invLoop == 0;
+			continue;
 
-	}
-	else if (input == "use") {
+		}
+		else if (input == "inspect") {
 
-		// call function to use item. add polymorphism to handle usage of potions vs other items
-		std::cout << "Which item? ";
-		std::cin >> input;
+			// display stats of item
+			std::cout << "Which item? ";
+			std::cin >> input;
 
-		// With processInput now have the index for the item.
-		inputNum = processInput(input);
+			// With processInput now have the index for the item.
+			inputNum = processInput(input);
 
-		std::cout << "Using item...\n"; //placeholder
-		interface();
+			std::cout << "Displaying stats...\n"; //placeholder
 
-	}
-	else if(input == "remove") {
+		}
+		else if (input == "use") {
 
-		// Remove item from inventory
-		std::cout << "Which item? ";
-		std::cin >> input;
+			// call function to use item. add polymorphism to handle usage of potions vs other items
+			std::cout << "Which item? ";
+			std::cin >> input;
 
-		// With processInput now have the index for the item.
-		inputNum = processInput(input);
-		input = items.at(inputNum)->getName();
-		//Another out of bounds error here to fix ^^^ try catch for out of bounds to reinput?
+			// With processInput now have the index for the item.
+			inputNum = processInput(input);
 
-		std::cout << "Are you sure you would like to delete " << input << "? ";
-		std::string inp;
-		std::cin >> inp;
-		inp = stringLower(inp);
+			std::cout << "Using item...\n"; //placeholder
 
-		if ((inp == "yes") || (inp == "1")) {
-			
-			remove(inputNum);
+		}
+		else if (input == "remove") {
+
+			// Remove item from inventory
+			std::cout << "Which item? ";
+			std::cin >> input;
+
+			// With processInput now have the index for the item.
+			inputNum = processInput(input);
+			input = items.at(inputNum)->getName();
+			//Another out of bounds error here to fix ^^^ try catch for out of bounds to reinput?
+
+			std::cout << "Are you sure you would like to delete " << input << "? ";
+			std::string inp;
+			std::cin >> inp;
+			inp = stringLower(inp);
+
+			if ((inp == "yes") || (inp == "1")) {
+
+				remove(inputNum);
+
+			}
+
+		}
+		else {
+
+			std::cout << "Not valid command.\nExiting inventory interface...\n";
+			invLoop == 0;
+			continue;
 
 		}
 
-		interface();
+
 
 	}
-	else {
-
-		std::cout << "Not valid command.\nExiting inventory interface...\n";
-		return;
-
-	}
-	
 
 }
 
