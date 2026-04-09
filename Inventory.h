@@ -9,6 +9,9 @@ class Inventory {
 		std::vector<Item*> items;
 
 	public:
+
+		//Deconstructor
+		~Inventory();
 		
 		void display();
 		void add(Item* item);

@@ -77,9 +77,6 @@ int TestFunctions() {
 			Inventory inv;
 			LoadObjects(inv);
 			inv.interface();
-
-			//clears objects and memory
-			inv.clear();
 		}
 
 	}

@@ -6,7 +6,12 @@
 #include <algorithm>
 #include <cctype>
 
-// TO DO: make a deconstructor instead of function for it
+//Deconstructor
+Inventory::~Inventory() {
+
+	clear();
+
+}
 
 void Inventory::interface() {
 
@@ -72,7 +77,6 @@ void Inventory::interface() {
 				continue;
 			}
 			input = items.at(inputNum)->getName();
-			//Another out of bounds error here to fix ^^^ try catch for out of bounds to reinput?
 
 			std::cout << "Are you sure you would like to delete " << input << "? ";
 			std::string inp;
@@ -187,7 +191,8 @@ int Inventory::processInput(std::string input) {
 
 	}
 	catch (std::invalid_argument&) {
-
+		
+		input = stringLower(input);
 		inputNum = element(input);
 
 	}
