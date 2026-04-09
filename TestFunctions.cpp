@@ -8,9 +8,9 @@
 
 void LoadObjects(Inventory& inv) {
 
-	Item* weapon1 = new Weapon("knife", 5);
+	Item* weapon1 = new Weapon("knife", 7, 10);
 	Item* armor1 = new Armor("breastplate", 10);
-	Item* weapon2 = new Weapon("katana", 12);
+	Item* weapon2 = new Weapon("katana", 12, 7);
 	Item* armor2 = new Armor("leather", 5);
 
 	inv.add(weapon1);
@@ -56,7 +56,7 @@ int TestFunctions() {
 		//function call here
 		std::cout << "Testing Item functions...\n";
 		std::cout << "Making a base class item: sword...\n";
-		Weapon weapon1("Sword", 10);
+		Weapon weapon1("Sword", 10, 9);
 		std::cout << "Item name is: " << weapon1.getName() << "\n";
 		std::cout << "Weapon damage is: " << weapon1.getDmg() << "\n";
 
@@ -78,6 +78,7 @@ int TestFunctions() {
 			LoadObjects(inv);
 			inv.interface();
 
+			//clears objects and memory
 			inv.clear();
 		}
 

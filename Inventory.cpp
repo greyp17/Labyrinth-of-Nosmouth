@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <cctype>
 
-// TO DO: more out of bounds checking, make other functions usable
+// TO DO: make a deconstructor instead of function for it
 
 void Inventory::interface() {
 
@@ -17,14 +17,14 @@ void Inventory::interface() {
 	while (invLoop == 1) {
 
 		display();
-		std::cout << "Commands: Exit, Inspect, Use, Remove\n";
+		std::cout << "Commands: Exit, Inspect, Use/Equip, Remove\n";
 		std::cin >> input;
 		input = stringLower(input);
 
 		if (input == "exit") {
 
 			// exit from inventory interface
-			invLoop == 0;
+			invLoop = 0;
 			continue;
 
 		}
@@ -36,11 +36,16 @@ void Inventory::interface() {
 
 			// With processInput now have the index for the item.
 			inputNum = processInput(input);
+			if (inputNum == -1) {
+				continue;
+			}
+			input = items.at(inputNum)->getName();
 
-			std::cout << "Displaying stats...\n"; //placeholder
+			std::cout << "Displaying stats for " << input << "...\n";
+			items.at(inputNum)->inspect();
 
 		}
-		else if (input == "use") {
+		else if (input == "use" || input == "equip") {
 
 			// call function to use item. add polymorphism to handle usage of potions vs other items
 			std::cout << "Which item? ";
@@ -48,8 +53,11 @@ void Inventory::interface() {
 
 			// With processInput now have the index for the item.
 			inputNum = processInput(input);
-
-			std::cout << "Using item...\n"; //placeholder
+			if (inputNum == -1) {
+				continue;
+			}
+			
+			items.at(inputNum)->use();
 
 		}
 		else if (input == "remove") {
@@ -60,6 +68,9 @@ void Inventory::interface() {
 
 			// With processInput now have the index for the item.
 			inputNum = processInput(input);
+			if (inputNum == -1) {
+				continue;
+			}
 			input = items.at(inputNum)->getName();
 			//Another out of bounds error here to fix ^^^ try catch for out of bounds to reinput?
 
@@ -77,8 +88,7 @@ void Inventory::interface() {
 		}
 		else {
 
-			std::cout << "Not valid command.\nExiting inventory interface...\n";
-			invLoop == 0;
+			std::cout << "Not valid command.\n";
 			continue;
 
 		}
@@ -157,6 +167,24 @@ int Inventory::processInput(std::string input) {
 		inputNum = std::stoi(input);
 		inputNum -= 1;
 
+		if ((inputNum < 0) || (inputNum >= items.size())) {
+
+			std::cout << inputNum + 1 << " not found.\nEnter item name (or cancel/0): ";
+			std::cin >> input;
+
+			if ((input == "cancel") || (input == "0")) {
+
+				return -1;
+
+			}
+			else {
+
+				return processInput(input);
+
+			}
+
+		}
+
 	}
 	catch (std::invalid_argument&) {
 
@@ -181,19 +209,18 @@ int Inventory::element(std::string itemName) {
 	}
 
 	std::string input;
-	std::cout << itemName << " not found.\nEnter item name (or cancel/0): ";
+	std::cout << itemName << " not found2.\nEnter item name (or cancel/0): ";
 	std::cin >> input;
-	int inputNum = processInput(input);
-	input = items.at(inputNum)->getName();
-	//Need to fix the error is here ^^^ for out of bounds maybe make if condition or try catch
-	if ((input == "cancel") || (inputNum == - 1)) {
+	input = stringLower(input);
+	
+	if ((input == "cancel") || (input == "0")) {
 
 		return -1;
 
 	}
 	else {
 		
-		return element(input);
+		return processInput(input);
 
 	}
 
