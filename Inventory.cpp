@@ -3,9 +3,11 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <algorithm>
+#include <cctype>
 
-// TO DO: make it accept lowercase, make a function that the others go through to use items (optimize code)
-//		  more bounds checking, make acceptable command like "Remove 1" instead of whole process.
+// TO DO: make a function that the others go through to use items (optimize code)
+//		  more bounds checking, look into make acceptable command like "Remove 1" instead of whole process.
 
 void Inventory::interface() {
 
@@ -13,14 +15,15 @@ void Inventory::interface() {
 	display();
 	std::cout << "Commands: Exit, Inspect, Use, Remove\n";
 	std::cin >> input;
+	input = stringLower(input);
 
-	if (input == "Exit") {
+	if (input == "exit") {
 
 		// exit from inventory interface
 		return;
 
 	} 
-	else if (input == "Inspect") {
+	else if (input == "inspect") {
 
 		// display stats of item
 		std::cout << "Which item? ";
@@ -29,7 +32,7 @@ void Inventory::interface() {
 		interface();
 
 	}
-	else if (input == "Use") {
+	else if (input == "use") {
 
 		// call function to use item. add polymorphism to handle usage of potions vs other items
 		std::cout << "Which item? ";
@@ -38,7 +41,7 @@ void Inventory::interface() {
 		interface();
 
 	}
-	else if(input == "Remove") {
+	else if(input == "remove") {
 
 		// Remove item from inventory
 		std::cout << "Which item? ";
@@ -52,13 +55,14 @@ void Inventory::interface() {
 		}
 		catch (std::invalid_argument&) {
 			
-			// Input is a string
+			input = stringLower(input);
 
 		}
 
 		std::cout << "Are you sure you would like to delete " << input << "? ";
 		std::string inp;
 		std::cin >> inp;
+		inp = stringLower(inp);
 
 		if ((inp == "yes") || (inp == "1")) {
 			
@@ -150,6 +154,15 @@ void Inventory::clear() {
 
 }
 
+// Look into making this a util file if needed?
+std::string Inventory::stringLower(std::string input) {
+
+	std::transform(input.begin(), input.end(), input.begin(),
+		[](unsigned char c) { return std::tolower(c); });
+
+	return input;
+}
+
 int Inventory::element(std::string itemName) {
 
 	for (int i{ 0 }; i < items.size(); i++) {
@@ -178,6 +191,8 @@ int Inventory::element(std::string itemName) {
 	}
 
 }
+
+
 
 
 

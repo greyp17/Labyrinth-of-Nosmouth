@@ -19,5 +19,7 @@ class Inventory {
 		void clear();
 		int element(std::string itemName);
 		int checkType(std::string input);
+		std::string stringLower(std::string input);
+		
 
 };
