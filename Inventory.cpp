@@ -174,6 +174,7 @@ int Inventory::element(std::string itemName) {
 	else {
 
 		element(input);
+		return 0;
 
 	}
 
