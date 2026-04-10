@@ -5,6 +5,7 @@
 #include "WEAPON.h"
 #include "Inventory.h"
 #include "ARMOR.h"
+#include "CHARACTER.h"
 
 void LoadObjects(Inventory& inv) {
 
@@ -33,18 +34,18 @@ int TestFunctions() {
 		std::string playerName = "Player";
 		std::cout << "Enter player name: ";
 		std::cin >> playerName;
-		Player player(playerName);
-		std::cout << "Player name is: " << player.getPlayerName() << "\n";
-		std::cout << "Player position is: (" << player.getPlayerX() << ", " << player.getPlayerY() << ")\n";
-		std::cout << "Player health is: " << player.getPlayerHP() << "\n";
+		Player player(playerName, Inventory());
+		std::cout << "Player name is: " << player.getCharacterName() << "\n";
+		std::cout << "Player position is: (" << player.getCharacterX() << ", " << player.getCharacterY() << ")\n";
+		std::cout << "Player health is: " << player.getCharacterHP() << "\n";
 		std::cout << "How much damage do you deal to player? ";
 		std::cin >> userAnswer;
 		player.takeDamage(userAnswer);
-		std::cout << "Current HP: " << player.getPlayerHP() << "\n";
+		std::cout << "Current HP: " << player.getCharacterHP() << "\n";
 		std::cout << "How much heal do you deal to player? ";
 		std::cin >> userAnswer;
 		player.healHealth(userAnswer);
-		std::cout << "Current HP: " << player.getPlayerHP() << "\n";
+		std::cout << "Current HP: " << player.getCharacterHP() << "\n";
 		std::cout << "Player test complete.\n";
 
 	}
