@@ -7,14 +7,19 @@ class Weapon : public Item {
 		
 		std::string type = "weapon";
 		int damage;
+		int accuracy;
 		// add attack speed maybe for variance of weapons?
 
 	public:
 
 		//Constructor
-		Weapon(std::string itemName, int weaponDmg);
+		Weapon(std::string itemName, int weaponDmg, int accuracy);
 
 		//Member Functions
+
+		//Polymorphism Functions
+		void inspect() override;
+		void use() override;
 
 		//Getters
 		int getDmg();

@@ -3,90 +3,103 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <algorithm>
+#include <cctype>
 
-// TO DO: make it accept lowercase, make a function that the others go through to use items (optimize code)
-//		  more bounds checking, make acceptable command like "Remove 1" instead of whole process.
+//Deconstructor
+Inventory::~Inventory() {
+
+	clear();
+
+}
 
 void Inventory::interface() {
 
 	std::string input;
-	display();
-	std::cout << "Commands: Exit, Inspect, Use, Remove\n";
-	std::cin >> input;
+	int inputNum;
+	int invLoop{1};
 
-	if (input == "Exit") {
+	while (invLoop == 1) {
 
-		// exit from inventory interface
-		return;
-
-	} 
-	else if (input == "Inspect") {
-
-		// display stats of item
-		std::cout << "Which item? ";
+		display();
+		std::cout << "Commands: Exit, Inspect, Use/Equip, Remove\n";
 		std::cin >> input;
-		std::cout << "Displaying stats...\n"; //placeholder
-		interface();
+		input = stringLower(input);
 
-	}
-	else if (input == "Use") {
+		if (input == "exit") {
 
-		// call function to use item. add polymorphism to handle usage of potions vs other items
-		std::cout << "Which item? ";
-		std::cin >> input;
-		std::cout << "Using item...\n"; //placeholder
-		interface();
-
-	}
-	else if(input == "Remove") {
-
-		// Remove item from inventory
-		std::cout << "Which item? ";
-		std::cin >> input;
-
-		int inputNum{-99};
-		try {
-
-			inputNum = std::stoi(input);  
-		
-		}
-		catch (std::invalid_argument&) {
-			
-			// Input is a string
+			// exit from inventory interface
+			invLoop = 0;
+			continue;
 
 		}
+		else if (input == "inspect") {
 
-		std::cout << "Are you sure you would like to delete " << input << "? ";
-		std::string inp;
-		std::cin >> inp;
+			// display stats of item
+			std::cout << "Which item? ";
+			std::cin >> input;
 
-		if ((inp == "yes") || (inp == "1")) {
-			
-			if (inputNum == -99) {
-				remove(input);
+			// With processInput now have the index for the item.
+			inputNum = processInput(input);
+			if (inputNum == -1) {
+				continue;
 			}
-			else {
+			input = items.at(inputNum)->getName();
+
+			std::cout << "Displaying stats for " << input << "...\n";
+			items.at(inputNum)->inspect();
+
+		}
+		else if (input == "use" || input == "equip") {
+
+			// call function to use item. add polymorphism to handle usage of potions vs other items
+			std::cout << "Which item? ";
+			std::cin >> input;
+
+			// With processInput now have the index for the item.
+			inputNum = processInput(input);
+			if (inputNum == -1) {
+				continue;
+			}
+			
+			items.at(inputNum)->use();
+
+		}
+		else if (input == "remove") {
+
+			// Remove item from inventory
+			std::cout << "Which item? ";
+			std::cin >> input;
+
+			// With processInput now have the index for the item.
+			inputNum = processInput(input);
+			if (inputNum == -1) {
+				continue;
+			}
+			input = items.at(inputNum)->getName();
+
+			std::cout << "Are you sure you would like to delete " << input << "? ";
+			std::string inp;
+			std::cin >> inp;
+			inp = stringLower(inp);
+
+			if ((inp == "yes") || (inp == "1")) {
+
 				remove(inputNum);
-			}
 
-			interface();
+			}
 
 		}
 		else {
 
-			interface();
+			std::cout << "Not valid command.\n";
+			continue;
 
 		}
 
 
-	}
-	else {
-
-		std::cout << "Not valid command.\nExiting inventory interface...\n";
-		return;
 
 	}
-	
 
 }
 
@@ -124,17 +137,8 @@ void Inventory::add(Item* item) {
 
 // Need to add out of bounds testing and error...
 void Inventory::remove(int itemNum) {
-	itemNum -= 1;
 	delete items.at(itemNum);
 	items.erase(items.begin() + itemNum);
-
-}
-
-void Inventory::remove(std::string item) {
-
-	int num = element(item);
-	num += 1;
-	remove(num);
 
 }
 
@@ -150,10 +154,57 @@ void Inventory::clear() {
 
 }
 
+// Look into making this a util file if needed?
+std::string Inventory::stringLower(std::string input) {
+
+	std::transform(input.begin(), input.end(), input.begin(),
+		[](unsigned char c) { return std::tolower(c); });
+
+	return input;
+}
+
+int Inventory::processInput(std::string input) {
+	
+	int inputNum{0};
+	try {
+
+		inputNum = std::stoi(input);
+		inputNum -= 1;
+
+		if ((inputNum < 0) || (inputNum >= items.size())) {
+
+			std::cout << inputNum + 1 << " not found.\nEnter item name (or cancel/0): ";
+			std::cin >> input;
+
+			if ((input == "cancel") || (input == "0")) {
+
+				return -1;
+
+			}
+			else {
+
+				return processInput(input);
+
+			}
+
+		}
+
+	}
+	catch (std::invalid_argument&) {
+		
+		input = stringLower(input);
+		inputNum = element(input);
+
+	}
+
+	return inputNum;
+
+}
+
 int Inventory::element(std::string itemName) {
 
 	for (int i{ 0 }; i < items.size(); i++) {
-
+	
 		if ((items[i]->getName()) == itemName) {
 
 			return i;
@@ -163,22 +214,20 @@ int Inventory::element(std::string itemName) {
 	}
 
 	std::string input;
-	std::cout << itemName << " not found.\nEnter item name (or cancel/0): ";
+	std::cout << itemName << " not found2.\nEnter item name (or cancel/0): ";
 	std::cin >> input;
-
+	input = stringLower(input);
+	
 	if ((input == "cancel") || (input == "0")) {
 
-		return 0;
+		return -1;
 
 	}
 	else {
-
-		element(input);
-		return 0;
+		
+		return processInput(input);
 
 	}
 
 }
-
-
 

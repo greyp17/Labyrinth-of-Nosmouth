@@ -15,6 +15,10 @@ public:
 
 	//Member Functions
 
+	//Polymorphism Functions
+	void inspect() override;
+	void use() override;
+
 	//Getters
 	int getDefense();
 	std::string getType();
