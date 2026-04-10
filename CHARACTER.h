@@ -12,7 +12,6 @@ private:
 	int yPosition{0};
 	int health{100};
 	// Need to add ITEMS class before setting up the vector for inventory...
-	Item inventory;
 
 public:
 	//Constructor
