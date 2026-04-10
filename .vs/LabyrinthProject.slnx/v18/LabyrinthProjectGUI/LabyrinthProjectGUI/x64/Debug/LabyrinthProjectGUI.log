@@ -1,0 +1,21 @@
+﻿  WEAPON.cpp
+C:\Users\greyp\source\repos\LabyrinthProjectGUI\LabyrinthProjectGUI\.CPPs\Headers\WEAPON.h(4,23): error C2504: 'Item': base class undefined
+  (compiling source file '.CPPs/WEAPON.cpp')
+  
+C:\Users\greyp\source\repos\LabyrinthProjectGUI\LabyrinthProjectGUI\.CPPs\Headers\WEAPON.h(14,15): error C2039: 'string': is not a member of 'std'
+  (compiling source file '.CPPs/WEAPON.cpp')
+      C:\Users\greyp\source\repos\LabyrinthProjectGUI\LabyrinthProjectGUI\predefined C++ types (compiler internal)(359,11):
+      see declaration of 'std'
+  
+C:\Users\greyp\source\repos\LabyrinthProjectGUI\LabyrinthProjectGUI\.CPPs\Headers\WEAPON.h(14,15): error C2061: syntax error: identifier 'string'
+  (compiling source file '.CPPs/WEAPON.cpp')
+  
+C:\Users\greyp\source\repos\LabyrinthProjectGUI\LabyrinthProjectGUI\.CPPs\WEAPON.cpp(4,9): error C2511: 'Weapon::Weapon(std::string,int)': overloaded member function not found in 'Weapon'
+      C:\Users\greyp\source\repos\LabyrinthProjectGUI\LabyrinthProjectGUI\.CPPs\Headers\WEAPON.h(4,7):
+      see declaration of 'Weapon'
+  
+C:\Users\greyp\source\repos\LabyrinthProjectGUI\LabyrinthProjectGUI\.CPPs\WEAPON.cpp(4,70): error C2550: 'Weapon::{ctor}': constructor initializer lists are only allowed on constructor definitions
+C:\Users\greyp\source\repos\LabyrinthProjectGUI\LabyrinthProjectGUI\.CPPs\WEAPON.cpp(6,2): error C2597: illegal reference to non-static member 'Weapon::damage'
+      C:\Users\greyp\source\repos\LabyrinthProjectGUI\LabyrinthProjectGUI\.CPPs\Headers\WEAPON.h(8,7):
+      see declaration of 'Weapon::damage'
+  
