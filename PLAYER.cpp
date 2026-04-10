@@ -1,18 +1,47 @@
 #include "PLAYER.h"
-#include "CHARACTER.h"
-#include "Inventory.h"
 #include <iostream>
 
-Player::Player(std::string name, Inventory inventory) : Character{name}{
-    // constructor implementation
-    setInventory(inventory);
+//Constructor
+Player::Player(std::string playerName) {
+
+	name = playerName;
+
 }
 
-//Member Functions, inventory etc...
-void Player::setInventory(Inventory inventory){
-        this->inventory = inventory;
+//Member Functions
+void Player::takeDamage(int damage) {
+
+	health -= damage;
+
+}
+void Player::healHealth(int heal) {
+
+	health += heal;
+
 }
 
-Inventory Player::getInventory() {
-	return inventory;
+//Position Getters
+int Player::getPlayerX() {
+
+	return xPosition;
+
+}
+
+int Player::getPlayerY() {
+
+	return yPosition;
+
+}
+//Name Getter
+std::string Player::getPlayerName() {
+
+	return name;
+
+}
+
+//HP Getter
+int Player::getPlayerHP() {
+
+	return health;
+
 }

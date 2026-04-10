@@ -8,7 +8,7 @@ Maze  Random_Gen;
 Maze Print_Map;
 
 
-int main() {
+int main(array<System::String^>^ args) {
     MAP Game;
 	int difficulty;
 	int Game_Run = 0;
