@@ -1,2 +1,3 @@
-﻿  ARMOR.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  GUILabyrinthProject.vcxproj -> C:\Users\hjang\Downloads\GUILabyrinthProject\x64\Debug\GUILabyrinthProject.exe
+﻿  MainStart.cpp
+  ARMOR.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  GUILabyrinthProject.vcxproj -> C:\Users\greyp\source\repos\Labyrinth-of-Nosmouth\x64\Debug\GUILabyrinthProject.exe

@@ -81,7 +81,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -117,9 +117,9 @@
     <ClCompile Include="ENEMY.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="ITEM.cpp" />
-    <ClCompile Include="MainStart.cpp" />
     <ClCompile Include="MAP.cpp" />
     <ClCompile Include="Maze.cpp" />
+    <ClCompile Include="MainStart.cpp" />
     <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="RandomUtil.cpp" />
     <ClCompile Include="TestFunctions.cpp" />
@@ -133,6 +133,9 @@
     <ClInclude Include="ITEM.h" />
     <ClInclude Include="MAP.h" />
     <ClInclude Include="Maze.h" />
+    <ClInclude Include="MyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="PLAYER.h" />
     <ClInclude Include="RandomUtil.h" />
     <ClInclude Include="TestFunctions.h" />
@@ -140,6 +143,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MyForm.resx">
+      <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
