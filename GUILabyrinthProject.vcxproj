@@ -118,10 +118,12 @@
     <ClCompile Include="ENEMY.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="ITEM.cpp" />
+    <ClCompile Include="LootTable.cpp" />
     <ClCompile Include="MAP.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="MainStart.cpp" />
     <ClCompile Include="PLAYER.cpp" />
+    <ClCompile Include="POTION.cpp" />
     <ClCompile Include="RandomUtil.cpp" />
     <ClCompile Include="TestFunctions.cpp" />
     <ClCompile Include="WEAPON.cpp" />
@@ -133,12 +135,14 @@
     <ClInclude Include="Global.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="ITEM.h" />
+    <ClInclude Include="LootTable.h" />
     <ClInclude Include="MAP.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="POTION.h" />
     <ClInclude Include="RandomUtil.h" />
     <ClInclude Include="TestFunctions.h" />
     <ClInclude Include="WEAPON.h" />

@@ -2,17 +2,22 @@
 #include "CHARACTER.h"
 #include "Inventory.h"
 #include <iostream>
+#include "WEAPON.h"
+#include "ARMOR.h"
 
-Player::Player(std::string name, Inventory inventory) : Character{ name } {
+Player::Player(std::string name) : Character( name ) {
     // constructor implementation
-    setInventory(inventory);
+    
+    // Starter equipment
+    inventory.add(new Weapon("Knife", 5, 8));
+
 }
+
 
 //Member Functions, inventory etc...
-void Player::setInventory(Inventory inventory) {
-    this->inventory = inventory;
-}
+void Player::invAdd(Item* item) {
 
-Inventory Player::getInventory() {
-    return inventory;
+    //Add items to inventory through player... player picks up -> add to inventory
+    inventory.add(item);
+
 }

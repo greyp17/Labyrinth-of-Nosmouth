@@ -7,17 +7,14 @@
 class Player : public Character {
 
 private:
-	//unique player attributes: inventory (doesn't work until item is defined)
 	Inventory inventory;
-
 
 public:
 	//Constructor
-	Player(std::string playerName, Inventory inventory);
+	Player(std::string playerName);
 
 	//Member Functions
-	void setInventory(Inventory inventory);
-	Inventory getInventory();
+	void invAdd(Item* item);
 
 	//to get position, health, etc., just use the getters from the Character class
 	//e.g. getCharacterX();

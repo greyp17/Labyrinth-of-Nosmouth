@@ -51,6 +51,12 @@
     <ClCompile Include="CHARACTER.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LootTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="POTION.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inventory.h">
@@ -90,6 +96,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CHARACTER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LootTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="POTION.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

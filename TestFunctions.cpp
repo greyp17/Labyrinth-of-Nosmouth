@@ -33,7 +33,7 @@ int TestFunctions() {
 		std::string playerName = "Player";
 		std::cout << "Enter player name: ";
 		std::cin >> playerName;
-		Player player(playerName, Inventory());
+		Player player(playerName);
 		std::cout << "Player name is: " << player.getCharacterName() << "\n";
 		std::cout << "Player position is: (" << player.getCharacterX() << ", " << player.getCharacterY() << ")\n";
 		std::cout << "Player health is: " << player.getCharacterHP() << "\n";
