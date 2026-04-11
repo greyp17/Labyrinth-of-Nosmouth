@@ -10,7 +10,6 @@ private:
 	//unique player attributes: inventory (doesn't work until item is defined)
 	Inventory inventory;
 
-
 public:
 	//Constructor
 	Player(std::string playerName, Inventory inventory);

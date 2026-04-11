@@ -1,4 +1,3 @@
-//grey code starts here
 #include "MAP.h"
 #include "TestFunctions.h"
 #include <iostream>
@@ -7,53 +6,43 @@
 #include "Global.h"
 #include "Maze.h"
 
-
+// garrison work start
 int MAP::RunGame() {
     while (Game_Run == 0) {
 		Maze maze;
 		if (difficulty == 1) {
-			int RenderEasyMap[EasyWidth][EasyHeight];
-			maze.Random_Gen( RenderEasyMap, EasyHeight, EasyWidth);
-			this->playerHP = 100;
-			while (this->playerHP > 0 && Game_Run == 0) {
-				// Game loop for Easy difficulty
-				 maze.Print_Map( RenderEasyMap, EasyHeight, EasyWidth);
-				this->playerHP -= 100;
-				if (this->playerHP <= 0) {
-					NewGame();
-				}
-			}
+			// these height + width values MUST ALL BE ODD NUMBERS for maze to be enclosed!!!
+			maze.setMazeHeight(25);
+			maze.setMazeWidth(25);
 		}
 		else if (difficulty == 2) {
-			int RenderMediumMap[MediumWidth][MediumHeight] = { 0 };
-			maze.Random_Gen(RenderMediumMap, MediumHeight, MediumWidth);
-			this->playerHP = 100;
-			while (this->playerHP > 0 && Game_Run == 0) {
-				// Game loop for Medium difficulty
-				maze.Print_Map( RenderMediumMap,  MediumHeight,  MediumWidth);
-				this->playerHP -= 100;
-				if (this->playerHP <= 0) {
-					NewGame();
-				}
-			}
+			maze.setMazeHeight(25);
+			maze.setMazeWidth(35);
 		}
 		else if (difficulty == 3) {
-			int RenderHardMap[HardWidth][HardHeight] = { 0 };
-			maze.Random_Gen(RenderHardMap, HardHeight, HardWidth);
-			this->playerHP = 100;
-			while (this->playerHP > 0 && Game_Run == 0) {
-				// Game loop for Hard difficulty
-				 maze.Print_Map( RenderHardMap,  HardHeight, HardWidth);
-				this->playerHP -= 100;
-				if (this->playerHP <= 0) {
-					NewGame();
-				}
-			}
+			maze.setMazeHeight(25);
+			maze.setMazeWidth(45);
 		}
 		else {
 			std::cout << "pick a new difficulty Easy(1) Medium(2) Hard(3)\n";
 			std::cin >> difficulty;
+			continue;
 		}
+
+		std::vector<std::vector<int>> mapArray(maze.getMazeHeight(), std::vector<int>(maze.getMazeWidth()));
+
+		// grey work start
+		maze.Random_Gen(maze.getMazeHeight(), maze.getMazeWidth());
+		this->playerHP = 100;
+		while (this->playerHP > 0 && Game_Run == 0) {
+			// Game loop for Easy difficulty
+			maze.Print_Map();
+			this->playerHP -= 100;
+			if (this->playerHP <= 0) {
+				NewGame();
+			}
+		}
+		
 	}
 	return 0;
 }
@@ -99,7 +88,7 @@ int MAP::NewGame() {
 			Play_again = -1; // resets
 		}
 	}
-	//end Garrison work
+	// end grey work
+	// end Garrison work
 	return 0;
 }
-
