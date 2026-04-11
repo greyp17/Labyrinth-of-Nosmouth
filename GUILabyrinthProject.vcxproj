@@ -81,7 +81,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -114,6 +114,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ARMOR.cpp" />
+    <ClCompile Include="CHARACTER.cpp" />
     <ClCompile Include="ENEMY.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="ITEM.cpp" />
@@ -127,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ARMOR.h" />
+    <ClInclude Include="CHARACTER.h" />
     <ClInclude Include="ENEMY.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Inventory.h" />

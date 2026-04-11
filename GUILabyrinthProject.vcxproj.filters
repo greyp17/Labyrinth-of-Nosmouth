@@ -48,6 +48,9 @@
     <ClCompile Include="MainStart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CHARACTER.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inventory.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MyForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CHARACTER.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

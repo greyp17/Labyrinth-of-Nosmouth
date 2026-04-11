@@ -1,3 +1,16 @@
-﻿  MainStart.cpp
+﻿  ARMOR.cpp
+  CHARACTER.cpp
+  ENEMY.cpp
+  Inventory.cpp
+  ITEM.cpp
+  MAP.cpp
+  Maze.cpp
+  MainStart.cpp
+  PLAYER.cpp
+  RandomUtil.cpp
+  TestFunctions.cpp
+  WEAPON.cpp
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Generating Code...
   ARMOR.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  GUILabyrinthProject.vcxproj -> C:\Users\greyp\source\repos\Labyrinth-of-Nosmouth\x64\Debug\GUILabyrinthProject.exe
+  GUILabyrinthProject.vcxproj -> C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\x64\Debug\GUILabyrinthProject.exe

@@ -1,32 +1,26 @@
 #pragma once
 #include <vector>
 #include <string>
+#include "CHARACTER.h"
+#include "Inventory.h"
 
-class Player {
+class Player : public Character {
 
 private:
+	//unique player attributes: inventory (doesn't work until item is defined)
+	Inventory inventory;
 
-	std::string name;
-	int xPosition{0};
-	int yPosition{0};
-	int health{100};
-	// Need to add ITEMS class before setting up the vector for inventory...
 
 public:
-
 	//Constructor
-	Player(std::string playerName);
+	Player(std::string playerName, Inventory inventory);
 
 	//Member Functions
-	void takeDamage(int damage);
-	void healHealth(int heal);
-	//Need to add stuff for inventory vector
+	void setInventory(Inventory inventory);
+	Inventory getInventory();
 
+	//to get position, health, etc., just use the getters from the Character class
+	//e.g. getCharacterX();
 
 	//Getters
-	int getPlayerX();
-	int getPlayerY();
-	std::string getPlayerName();
-	int getPlayerHP();
-	
 };
