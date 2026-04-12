@@ -5,18 +5,8 @@
 #include "WEAPON.h"
 #include "Inventory.h"
 #include "ARMOR.h"
-
-void LoadObjects(Inventory& inv) {
-
-	Item* armor1 = new Armor("breastplate", "armor", 10);
-	Item* weapon2 = new Weapon("katana", "weapon", 12, 7);
-	Item* armor2 = new Armor("leather", "armor", 5);
-
-	inv.add(armor1);
-	inv.add(weapon2);
-	inv.add(armor2);
-
-}
+#include "Combat.h"
+#include "ENEMY.h"
 
 int TestFunctions() {
 
@@ -34,15 +24,15 @@ int TestFunctions() {
 		Player player(playerName);
 		std::cout << "Player name is: " << player.getCharacterName() << "\n";
 		std::cout << "Player position is: (" << player.getCharacterX() << ", " << player.getCharacterY() << ")\n";
-		std::cout << "Player health is: " << player.getCharacterHP() << "\n";
+		std::cout << "Player health is: " << player.getHealth() << "\n";
 		std::cout << "How much damage do you deal to player? ";
 		std::cin >> userAnswer;
 		player.takeDamage(userAnswer);
-		std::cout << "Current HP: " << player.getCharacterHP() << "\n";
+		std::cout << "Current HP: " << player.getHealth() << "\n";
 		std::cout << "How much heal do you deal to player? ";
 		std::cin >> userAnswer;
 		player.healHealth(userAnswer);
-		std::cout << "Current HP: " << player.getCharacterHP() << "\n";
+		std::cout << "Current HP: " << player.getHealth() << "\n";
 		std::cout << "Player test complete.\n";
 
 	}
@@ -60,7 +50,7 @@ int TestFunctions() {
 
 	}
 
-	std::cout << "Would you like to test inventory? (0(no)/1(yes))\n";
+	std::cout << "Would you like to test Inventory? (0(no)/1(yes))\n";
 	std::cin >> userAnswer;
 	if (userAnswer == 1) {
 
@@ -74,10 +64,35 @@ int TestFunctions() {
 			std::cout << "Successfully accessing inventory...\n";
 
 			Player player("Hero");
-			LoadObjects(player.getInventory());
 
 			//Do this for inventory loop
 			player.getInventory().interface(player);
+		}
+
+	}
+
+	std::cout << "Would you like to test Combat? (0(no)/1(yes))\n";
+	std::cin >> userAnswer;
+	if (userAnswer == 1) {
+
+		//function call here
+		std::cout << "Testing Combat functions...\n";
+		std::string input;
+
+		Enemy enemy("Bandit");
+		Player player("Hero");
+
+		int result = combatStart(player, enemy);
+		
+		if (result == 1) {
+
+			std::cout << "Player wins.\n";
+
+		}
+		else if (result == 0) {
+
+			std::cout << "Player loses.\n";
+
 		}
 
 	}

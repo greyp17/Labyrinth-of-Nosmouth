@@ -7,7 +7,7 @@
 
 Item* generateLoot() {
 
-	int rand = randomInt(1, 20);
+	int rand = randomInt(1, 23);
 
 	switch (rand) {
 
@@ -74,7 +74,19 @@ Item* generateLoot() {
 
 		case 20:
 			return new Weapon("heavy", "weapon", 11, 7);
+
+		// Added more healing potions...
+		case 21:
+			return new Potion("healing", "potion");
+		
+		case 22:
+			return new Potion("healing", "potion");
+
+		case 23:
+			return new Potion("healing", "potion");
+
 		}
 
 	return nullptr;
 }
+

@@ -1,6 +1,5 @@
-﻿  MAP.cpp
-  MainStart.cpp
-  Maze.cpp
+﻿  Combat.cpp
+  TestFunctions.cpp
   Generating Code...
   ARMOR.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  GUILabyrinthProject.vcxproj -> C:\Users\garyl\source\repos\Labyrinth-of-Nosmouth\x64\Debug\GUILabyrinthProject.exe
+  GUILabyrinthProject.vcxproj -> C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\x64\Debug\GUILabyrinthProject.exe
