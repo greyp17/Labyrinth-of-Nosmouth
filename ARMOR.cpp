@@ -1,8 +1,9 @@
 #include "ARMOR.h"
+#include "PLAYER.h"
 #include <iostream>
 
 //Constructor
-Armor::Armor(std::string itemName, int armorDefense) : Item(itemName) {
+Armor::Armor(std::string itemName, std::string itemType, int armorDefense) : Item(itemName, itemType) {
 
 	defense = armorDefense;
 
@@ -14,15 +15,16 @@ Armor::Armor(std::string itemName, int armorDefense) : Item(itemName) {
 void Armor::inspect() {
 
 	//gives stats of weapon
-	std::cout << "give armor stat";
+	std::cout << "Defense: " << defense << "\n";
 
 }
 
-void Armor::use() {
+void Armor::use(Player& player) {
 
 	//equips weapon
 	std::string input = getName();
-	std::cout << "Equipping " << input << "...\n";
+	std::cout << "Equipping " << input << " armor...\n";
+	player.setDefense(getDefense());
 
 }
 
@@ -33,8 +35,3 @@ int Armor::getDefense() {
 
 }
 
-std::string Armor::getType() {
-
-	return type;
-
-}

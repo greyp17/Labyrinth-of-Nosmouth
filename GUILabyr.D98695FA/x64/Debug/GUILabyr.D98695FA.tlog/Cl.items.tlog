@@ -1,5 +1,6 @@
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\ARMOR.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\ARMOR.obj
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\CHARACTER.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\CHARACTER.obj
+C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\Combat.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\Combat.obj
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\ENEMY.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\ENEMY.obj
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\Inventory.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\Inventory.obj
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\ITEM.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\ITEM.obj
@@ -8,6 +9,7 @@ C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\MAP.cpp;C:\Users\hjang\source\
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\Maze.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\Maze.obj
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\MainStart.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\MainStart.obj
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\PLAYER.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\PLAYER.obj
+C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\POTION.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\POTION.obj
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\RandomUtil.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\RandomUtil.obj
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\TestFunctions.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\TestFunctions.obj
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\WEAPON.cpp;C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\WEAPON.obj

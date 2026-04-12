@@ -8,12 +8,10 @@
 
 void LoadObjects(Inventory& inv) {
 
-	Item* weapon1 = new Weapon("knife", 7, 10);
-	Item* armor1 = new Armor("breastplate", 10);
-	Item* weapon2 = new Weapon("katana", 12, 7);
-	Item* armor2 = new Armor("leather", 5);
+	Item* armor1 = new Armor("breastplate", "armor", 10);
+	Item* weapon2 = new Weapon("katana", "weapon", 12, 7);
+	Item* armor2 = new Armor("leather", "armor", 5);
 
-	inv.add(weapon1);
 	inv.add(armor1);
 	inv.add(weapon2);
 	inv.add(armor2);
@@ -56,7 +54,7 @@ int TestFunctions() {
 		//function call here
 		std::cout << "Testing Item functions...\n";
 		std::cout << "Making a base class item: sword...\n";
-		Weapon weapon1("Sword", 10, 9);
+		Weapon weapon1("Sword", "weapon", 10, 9);
 		std::cout << "Item name is: " << weapon1.getName() << "\n";
 		std::cout << "Weapon damage is: " << weapon1.getDmg() << "\n";
 
@@ -74,9 +72,12 @@ int TestFunctions() {
 		if (input == "inventory") {
 
 			std::cout << "Successfully accessing inventory...\n";
-			Inventory inv;
-			LoadObjects(inv);
-			inv.interface();
+
+			Player player("Hero");
+			LoadObjects(player.getInventory());
+
+			//Do this for inventory loop
+			player.getInventory().interface(player);
 		}
 
 	}

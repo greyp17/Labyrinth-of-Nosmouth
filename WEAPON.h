@@ -1,11 +1,11 @@
 #pragma once
 #include "ITEM.h"
+#include <string>
 
 class Weapon : public Item {
 
 	private:
 		
-		std::string type = "weapon";
 		int damage;
 		int accuracy;
 		// add attack speed maybe for variance of weapons?
@@ -13,16 +13,16 @@ class Weapon : public Item {
 	public:
 
 		//Constructor
-		Weapon(std::string itemName, int weaponDmg, int accuracy);
+		Weapon(std::string itemName, std::string itemType, int weaponDmg, int accuracy);
 
 		//Member Functions
 
 		//Polymorphism Functions
 		void inspect() override;
-		void use() override;
+		void use(Player& player) override;
 
 		//Getters
 		int getDmg();
-		std::string getType();
+		int getAcc();
 
 };

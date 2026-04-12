@@ -1,4 +1,4 @@
 #pragma once
 #include "ITEM.h"
 
-Item* generatedLoot();
+Item* generateLoot();

@@ -1,24 +1,27 @@
 #pragma once
 #include "ITEM.h"
+#include "CHARACTER.h"
+#include <string>
 
 class Potion : public Item {
 
 private:
 
-	std::string type = "potion";
+
 
 public:
 
 	//Constructor
-	Potion(std::string itemName);
+	Potion(std::string itemName, std::string itemType);
 
 	//Member Functions
 
 	//Polymorphism Functions
 	void inspect() override;
-	void use() override;
+	void use(Player& player) override;
+	void drink(Character& player);
 
 	//Getters
-	std::string getType();
+	
 
 };

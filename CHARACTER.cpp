@@ -15,6 +15,24 @@ void Character::healHealth(int heal) {
 	health += heal;
 }
 
+void Character::setDefense(int inputDefense) {
+
+	defense = inputDefense;
+
+}
+
+void Character::setDamage(int inputDamage) {
+
+	damage = inputDamage;
+
+}
+
+void Character::setAccuracy(int inputAccuracy) {
+
+	accuracy = inputAccuracy;
+
+}
+
 //Position Getters
 int Character::getCharacterX() {
 	return xPosition;
@@ -31,5 +49,23 @@ std::string Character::getCharacterName() {
 
 //HP Getter
 int Character::getCharacterHP() {
+
 	return health;
+
+}
+
+int Character::getDamage() {
+
+	return damage;
+
+}
+int Character::getDefense() {
+
+	return defense;
+
+}
+int Character::getAccuracy() {
+
+	return accuracy;
+
 }

@@ -1,5 +1,8 @@
 #include "Inventory.h"
 #include "ITEM.h"
+#include "PLAYER.h"
+#include "CHARACTER.h"
+#include "LootTable.h"
 #include <vector>
 #include <string>
 #include <iostream>
@@ -13,7 +16,7 @@ Inventory::~Inventory() {
 
 }
 
-void Inventory::interface() {
+void Inventory::interface(Player& player) {
 
 	std::string input;
 	int inputNum;
@@ -22,9 +25,8 @@ void Inventory::interface() {
 	while (invLoop == 1) {
 
 		display();
-		std::cout << "Commands: Exit, Inspect, Use/Equip, Remove\n";
+		std::cout << "Commands: Exit, Inspect, Equip, Stats, Remove\n";
 		std::cin >> input;
-		input = stringLower(input);
 
 		if (input == "exit") {
 
@@ -45,12 +47,13 @@ void Inventory::interface() {
 				continue;
 			}
 			input = items.at(inputNum)->getName();
+			std::string inputType = items.at(inputNum)->getType();
 
-			std::cout << "Displaying stats for " << input << "...\n";
+			std::cout << "Displaying stats for " << input << " " << inputType << "...\n";
 			items.at(inputNum)->inspect();
 
 		}
-		else if (input == "use" || input == "equip") {
+		else if (input == "equip") {
 
 			// call function to use item. add polymorphism to handle usage of potions vs other items
 			std::cout << "Which item? ";
@@ -61,8 +64,21 @@ void Inventory::interface() {
 			if (inputNum == -1) {
 				continue;
 			}
-			
-			items.at(inputNum)->use();
+			input = items.at(inputNum)->getName();
+			std::string inputType = items.at(inputNum)->getType();
+
+			if (inputType == "armor") {
+
+				armor = input;
+
+			}
+			else if (inputType == "weapon") {
+
+				weapon = input;
+
+			}
+
+			items.at(inputNum)->use(player);
 
 		}
 		else if (input == "remove") {
@@ -77,6 +93,7 @@ void Inventory::interface() {
 				continue;
 			}
 			input = items.at(inputNum)->getName();
+			input = stringLower(input);
 
 			std::cout << "Are you sure you would like to delete " << input << "? ";
 			std::string inp;
@@ -86,6 +103,30 @@ void Inventory::interface() {
 			if ((inp == "yes") || (inp == "1")) {
 
 				remove(inputNum);
+
+			}
+
+		}
+		else if (input == "stats") {
+
+			currentAccuracy = player.getAccuracy();
+			currentDamage = player.getDamage();
+			currentDefense = player.getDefense();
+
+			std::cout << "Currently Equipped: Armor: " << armor << ", Weapon: " << weapon << "\n";
+			std::cout << "Stats: \nAccuracy: " << currentAccuracy << "\nDamage: " << currentDamage <<
+						"\nDefense: " << currentDefense << "\n";
+
+		}
+		else if (input == "dev") {
+
+			std::cout << "Commands: Add\n";
+			std::cin >> input;
+			input = stringLower(input);
+
+			if (input == "add") {
+
+				player.invAdd(generateLoot());
 
 			}
 
@@ -116,16 +157,31 @@ void Inventory::display() {
 
 		//loop printing out stack of items within the vector
 		int i{ 0 };
+		
 		for (Item* item : items) {
 			i++;
 			std::cout << "(" << i << ") ";
 			std::cout << item->getName() << " ";
+
+			if (armor == item->getName() || weapon == item->getName()) {
+
+				std::cout << "(equipped) ";
+
+			}
+
+			if (items.size() > 6 && i % 6 == 0) {
+
+				std::cout << "\n";
+
+			}
 
 		}
 
 		std::cout << "\n";
 
 	}
+
+
 
 }
 
@@ -214,7 +270,7 @@ int Inventory::element(std::string itemName) {
 	}
 
 	std::string input;
-	std::cout << itemName << " not found2.\nEnter item name (or cancel/0): ";
+	std::cout << itemName << " not found.\nEnter item name (or cancel/0): ";
 	std::cin >> input;
 	input = stringLower(input);
 	

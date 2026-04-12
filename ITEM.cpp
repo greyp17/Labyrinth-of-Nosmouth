@@ -1,9 +1,10 @@
 #include "ITEM.h"
 
 //Constructor
-Item::Item(std::string itemName) {
+Item::Item(std::string itemName, std::string itemType) {
 
 	name = itemName;
+	type = itemType;
 
 }
 
@@ -11,5 +12,11 @@ Item::Item(std::string itemName) {
 std::string Item::getName() {
 
 	return name;
+
+}
+
+std::string Item::getType() {
+
+	return type;
 
 }
