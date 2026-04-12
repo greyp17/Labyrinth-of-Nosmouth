@@ -5,3 +5,6 @@ C:\Users\greyp\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\GU
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\GUILabyrinthProject.vcxproj.AssemblyReference.cache
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\GUILabyrinthProject.MyForm.resources
 C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\GUILabyrinthProject.vcxproj.GenerateResource.cache
+C:\Users\garyl\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\GUILabyrinthProject.vcxproj.AssemblyReference.cache
+C:\Users\garyl\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\GUILabyrinthProject.MyForm.resources
+C:\Users\garyl\source\repos\Labyrinth-of-Nosmouth\GUILabyr.D98695FA\x64\Debug\GUILabyrinthProject.vcxproj.GenerateResource.cache
