@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-﻿  MAP.cpp
-=======
-﻿  Combat.cpp
-  TestFunctions.cpp
-  Generating Code...
->>>>>>> f8e32f5e7ed6b28f461deb4348e4b30121a09322
+﻿  MainStart.cpp
+C:\Users\greyp\source\repos\Labyrinth-of-Nosmouth\MainStart.cpp(29,1): warning C4700: uninitialized local variable 'difficulty' used
   ARMOR.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  GUILabyrinthProject.vcxproj -> C:\Users\hjang\source\repos\Labyrinth-of-Nosmouth\x64\Debug\GUILabyrinthProject.exe
+  GUILabyrinthProject.vcxproj -> C:\Users\greyp\source\repos\Labyrinth-of-Nosmouth\x64\Debug\GUILabyrinthProject.exe

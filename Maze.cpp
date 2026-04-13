@@ -31,15 +31,22 @@ int Maze::Random_Gen(int mapHeight, int mapWidth) {
 int Maze::Random_Gen(int mapHeight, int mapWidth) {
 	std::random_device rd;
 	std::default_random_engine rng(rd());
+
+	this->height = mapHeight;
+	this->width = mapWidth;	
+
 	mapArray.clear();
 	mapArray.resize(mapHeight);
 
 	// initializes all cells to 1 (wall)
-	mapArray.assign(height, std::vector<int>(width, 1));
+	mapArray.clear();
+	mapArray.assign(height, std::vector<int>(mapWidth, 1));
 
 	// stack that tracks pairs of coordinates
 	std::stack<std::pair<int, int>> cellStack;
 	std::pair<int, int> startPoint = { 1, 1 };
+
+	if (mapHeight < 3 || mapWidth < 3) return -1; // Maze must be at least 3x3 to have a valid path
 
 	// first cell (inside the outer wall layer) is the starting point, it gets set 0 (path)
 	mapArray[1][1] = 0;
