@@ -26,6 +26,7 @@ public:
 	void setDefense(int inputDefense);
 	void setAccuracy(int inputAccuracy);
 	void setDamage(int inputDamage);
+	void setHealth(int inputHealth);
 
 	//Need to add stuff for inventory vector
 
@@ -35,10 +36,9 @@ public:
 	int getCharacterX();
 	int getCharacterY();
 	std::string getCharacterName();
-	int getCharacterHP();
+	int getHealth();
 	int getDefense();
 	int getAccuracy();
 	int getDamage();
-	int getHealth();
 	
 };

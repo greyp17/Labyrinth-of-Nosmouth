@@ -15,6 +15,12 @@ void Character::healHealth(int heal) {
 	health += heal;
 }
 
+void Character::setHealth(int inputHealth) {
+
+	health = inputHealth;
+
+}
+
 void Character::setDefense(int inputDefense) {
 
 	defense = inputDefense;
@@ -48,7 +54,7 @@ std::string Character::getCharacterName() {
 }
 
 //HP Getter
-int Character::getCharacterHP() {
+int Character::getHealth() {
 
 	return health;
 

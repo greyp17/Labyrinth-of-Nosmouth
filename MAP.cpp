@@ -30,23 +30,80 @@ int MAP::RunGame() {
 		}
 
 		std::vector<std::vector<int>> mapArray(maze.getMazeHeight(), std::vector<int>(maze.getMazeWidth()));
-
-		// grey work start
+	
 		maze.Random_Gen(maze.getMazeHeight(), maze.getMazeWidth());
+		
+		// to skip the game loop and test functions, you can set this to -1.
 		this->playerHP = 100;
-		while (this->playerHP > 0 && Game_Run == 0) {
-			// Game loop for Easy difficulty
-			maze.Print_Map();
-			this->playerHP -= 100;
-			if (this->playerHP <= 0) {
-				NewGame();
-			}
-		}
 
+		// mapArray value '2' represents the player
+		// there should NEVER be more than one '2' on the map at a time.
+
+		maze.setMapArrayValue(1, 1, 2); // sets player's starting location to [1,1] (top left)
+
+		std::pair<int, int> playerPosition = { 1, 1 };
+		while (this->playerHP > 0 && Game_Run == 0) {
+			maze.Print_Map();
+			
+			// movement testing
+			std::string input;
+			std::cout << "To move, enter (w, a, s, d) and press enter.\n";
+			std::cout << "Current position: (" << playerPosition.first << ", " << playerPosition.second << ")\n";
+			// this will be done with buttons later, it's clunky rn, i know.
+
+			std::cin >> input;
+			std::cout << "\n\n\n"; // clears space between map prints
+
+			if (input == "W" || input == "w") {
+				if (maze.getMapArrayValue(playerPosition.first - 1, playerPosition.second) == 1 || maze.getMapArrayValue(playerPosition.first - 1, playerPosition.second) == -1) {
+					std::cout << "You can't move there!\n";
+				}
+				else {
+					maze.setMapArrayValue(playerPosition.first, playerPosition.second, 0); // sets old player position to 0 (path)
+					playerPosition.first -= 1; // kinda counter-intuitive, subtracting moves player up (because 0,0 is the top left)
+				}
+			}
+			else if (input == "S" || input == "s") {
+				if (maze.getMapArrayValue(playerPosition.first + 1, playerPosition.second) == 1 || maze.getMapArrayValue(playerPosition.first + 1, playerPosition.second) == -1) {
+					std::cout << "You can't move there!\n";
+				}
+				else {
+					maze.setMapArrayValue(playerPosition.first, playerPosition.second, 0);
+					playerPosition.first += 1;
+				}
+			}
+			else if (input == "A" || input == "a") {
+				if (maze.getMapArrayValue(playerPosition.first, playerPosition.second - 1) == 1 || maze.getMapArrayValue(playerPosition.first, playerPosition.second - 1) == -1) {
+					std::cout << "You can't move there!\n";
+				}
+				else {
+					maze.setMapArrayValue(playerPosition.first, playerPosition.second, 0);
+					playerPosition.second -= 1;
+				}
+			}
+			else if (input == "D" || input == "d") {
+				if (maze.getMapArrayValue(playerPosition.first, playerPosition.second + 1) == 1 || maze.getMapArrayValue(playerPosition.first, playerPosition.second + 1) == -1) {
+					std::cout << "You can't move there!\n";
+				}
+				else {
+					maze.setMapArrayValue(playerPosition.first, playerPosition.second, 0);
+					playerPosition.second += 1;
+				}
+			}
+			else {
+				std::cout << "Invalid input. Please enter up, down, left, or right.\n";
+			}
+			maze.setMapArrayValue(playerPosition.first, playerPosition.second, 2); // updates the actual vector mapArray with the new player position
+
+			
+
+		}
+		NewGame();
 	}
 	return 0;
+	// end garrison work
 }
-
+// grey work start
 int MAP::NewGame() {
 	std::cout << "Game Over!" << "\n";
 

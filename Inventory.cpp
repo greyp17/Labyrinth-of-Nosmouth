@@ -157,6 +157,7 @@ void Inventory::display() {
 
 		//loop printing out stack of items within the vector
 		int i{ 0 };
+		int num{6};
 		
 		for (Item* item : items) {
 			i++;
@@ -169,7 +170,13 @@ void Inventory::display() {
 
 			}
 
-			if (items.size() > 6 && i % 6 == 0) {
+			if (num == 6 && items.size() > num && i % num == 0) {
+
+				std::cout << "\n";
+				num = 8;
+
+			}
+			else if (num == 8 && items.size() > num && (i-6) % num == 0) {
 
 				std::cout << "\n";
 

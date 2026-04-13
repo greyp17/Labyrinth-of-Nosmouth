@@ -19,6 +19,8 @@ public:
 
     void setMapArray(const std::vector<std::vector<int>>& mapArray);
     void setMapArrayValue(int height, int width, int value);
+	int getMapArrayValue(int height, int width) const;
+
     std::vector<std::vector<int>> getMapArray() const;
 
 private:

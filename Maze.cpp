@@ -90,12 +90,22 @@ void Maze::setMapArrayValue(int r, int c, int value) {
 	}
 }
 
+int Maze::getMapArrayValue(int r, int c) const {
+	if (isValid(r, c)) {
+		return mapArray[r][c];
+	}
+	return -1; // Invalid coordinates (out of bounds)
+}
+
 // function to print map.
 void Maze::Print_Map() {
 	for (size_t r = 0; r < mapArray.size(); ++r) {
 		for (size_t c = 0; c < mapArray[r].size(); ++c) {
 			if (mapArray[r][c] == 1) {
 				std::cout << "# "; // wall
+			}
+			else if (mapArray[r][c] == 2) {
+				std::cout << "X "; // player
 			}
 			else {
 				std::cout << "  "; // path

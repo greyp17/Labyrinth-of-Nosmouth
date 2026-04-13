@@ -20,7 +20,7 @@ int main(array<String^>^ args)
 	int Game_Run = 0;
 	while (Game_Run == 0){
 	Application::EnableVisualStyles();
-	Application::SetCompatibleTextRenderingDefault(false);
+	// Application::SetCompatibleTextRenderingDefault(false);
 	GUILabyrinthProject::MyForm form;
 	Application::Run(% form);
 		std::cout << "Welcome to the Labyrinth of Nosmouth!" << "\n";
