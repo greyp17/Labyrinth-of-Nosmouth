@@ -41,23 +41,24 @@ int Maze::Random_Gen(int mapHeight, int mapWidth) {
 	std::stack<std::pair<int, int>> cellStack;
 	std::pair<int, int> startPoint = { 1, 1 };
 
-	// first cell (player location) must be 0 (path)
+	// first cell (inside the outer wall layer) is the starting point, it gets set 0 (path)
 	mapArray[1][1] = 0;
 	cellStack.push(startPoint);
 
 	while (!cellStack.empty()) {
 		std::pair<int, int> currentCell = cellStack.top();
 
+		// create other vector of cells that are 2 units away in every direction
 		std::vector<std::pair<int, int>> neighbors;
 
 		// need to be units of 2 to make paths between walls
 		int directions[4][2] = { {0, 2}, {0, -2}, {2, 0}, {-2, 0} };
 
 		for (int i = 0; i < 4; i++) {
-			int newRow = currentCell.first + directions[i][0];
-			int newCol = currentCell.second + directions[i][1];
+			int newRow = currentCell.first + directions[i][0]; // checks the first value in directions, which is the row change
+			int newCol = currentCell.second + directions[i][1]; // checks the second value in directions, which is the column change
 			if (isValid(newRow, newCol) && mapArray[newRow][newCol] == 1) {
-				neighbors.push_back({ newRow, newCol });
+				neighbors.push_back({ newRow, newCol }); // if the cell is valid, add it to the neighbors vector
 			}
 		}
 
