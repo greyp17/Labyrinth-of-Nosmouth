@@ -1,4 +1,5 @@
-﻿  MainStart.cpp
-C:\Users\greyp\source\repos\Labyrinth-of-Nosmouth\MainStart.cpp(29,1): warning C4700: uninitialized local variable 'difficulty' used
+﻿  MAP.cpp
+  Maze.cpp
+  Generating Code...
   ARMOR.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   GUILabyrinthProject.vcxproj -> C:\Users\greyp\source\repos\Labyrinth-of-Nosmouth\x64\Debug\GUILabyrinthProject.exe

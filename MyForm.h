@@ -181,7 +181,18 @@ namespace GUILabyrinthProject {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				int val = nativeMaze->getMapArrayValue(i, j);
-				System::Drawing::Brush^ brush = (val == 1) ? System::Drawing::Brushes::Black : System::Drawing::Brushes::White;
+				System::Drawing::Brush^ brush = System::Drawing::Brushes::White;
+				if (val == 1) {
+					brush = System::Drawing::Brushes::Black;
+				}
+				else if (val == 2) {
+					brush = System::Drawing::Brushes::Blue;
+				}
+				else if (val == 3) {
+					brush = System::Drawing::Brushes::Gold;
+				}
+				
+
 				System::Drawing::RectangleF rect(j * cellWidth, i * cellHeight, cellWidth, cellHeight);
 				g->FillRectangle(brush, rect);
 				g->DrawRectangle(System::Drawing::Pens::Black, rect.X, rect.Y, rect.Width, rect.Height);

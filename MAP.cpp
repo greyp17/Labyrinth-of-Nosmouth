@@ -39,7 +39,6 @@ int MAP::RunGame() {
 		// mapArray value '2' represents the player
 		// there should NEVER be more than one '2' on the map at a time.
 
-		maze.setMapArrayValue(1, 1, 2); // sets player's starting location to [1,1] (top left)
 
 		std::pair<int, int> playerPosition = { 1, 1 };
 		while (this->playerHP > 0 && Game_Run == 0) {

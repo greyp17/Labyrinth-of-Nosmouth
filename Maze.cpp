@@ -88,6 +88,26 @@ int Maze::Random_Gen(int mapHeight, int mapWidth) {
 			cellStack.pop();
 		}
 	}
+	int chestCount;
+	this->setMapArrayValue(1, 1, 2); 
+
+	if (height == 15 && width == 15) {
+		chestCount = 3;
+	}
+	else if (height == 25 && width == 25) {
+		chestCount = 5;
+	} else {
+		chestCount = 7;
+	}
+
+	while (chestCount > 0) {
+		int r = randomInt(1, height - 2);
+		int c = randomInt(1, width - 2);
+		if (mapArray[r][c] == 0) { // Only place a chest on a path cell
+			mapArray[r][c] = 3; // 3 represents a chest
+			chestCount--;
+		}
+	}
 
 	return 1;
 }
@@ -114,6 +134,9 @@ void Maze::Print_Map() {
 			}
 			else if (mapArray[r][c] == 2) {
 				std::cout << "X "; // player
+			}
+			else if (mapArray[r][c] == 3) {
+				std::cout << "C "; // chest
 			}
 			else {
 				std::cout << "  "; // path
