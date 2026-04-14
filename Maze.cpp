@@ -160,7 +160,7 @@ bool Maze::isWalkable(int r, int c) const {
 
 	if (tile == 3) {
 
-		//placeholder call chest function...
+		void triggerChest();
 
 	}
 	else if (tile == 4) {
