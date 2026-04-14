@@ -280,6 +280,9 @@ namespace GUILabyrinthProject {
 				else if (val == 3) {
 					brush = System::Drawing::Brushes::Gold;
 				}
+				else if (val == 4) {
+					brush = System::Drawing::Brushes::Red;
+				}
 				
 
 				System::Drawing::RectangleF rect(j * cellWidth, i * cellHeight, cellWidth, cellHeight);

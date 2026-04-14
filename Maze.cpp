@@ -4,6 +4,7 @@
 #include "MAP.h"
 #include "Global.h"
 #include "LootTable.h"
+#include "RandomUtil.h"
 #include <vector>
 #include <stack>
 #include <algorithm>
@@ -90,17 +91,22 @@ int Maze::Random_Gen(int mapHeight, int mapWidth) {
 		}
 	}
 	int chestCount;
+	int enemyCount;
 	//this->setMapArrayValue(1, 1, 2); 
 
 	if (height == 15 && width == 15) {
-		chestCount = 3;
+		chestCount = randomInt(3, 4);
+		enemyCount = randomInt(4, 5);
 	}
 	else if (height == 25 && width == 25) {
-		chestCount = 5;
+		chestCount = randomInt(5, 6);
+		enemyCount = randomInt(6, 7);
 	} else {
-		chestCount = 7;
+		chestCount = randomInt(7, 8);
+		enemyCount = randomInt(8, 9);
 	}
 
+	// Generate Chests into maze array in empty space
 	while (chestCount > 0) {
 		int r = randomInt(1, height - 2);
 		int c = randomInt(1, width - 2);
@@ -109,6 +115,18 @@ int Maze::Random_Gen(int mapHeight, int mapWidth) {
 			chestCount--;
 		}
 	}
+
+	// Generate Enemies into maze array in empty space
+	while (enemyCount > 0) {
+		int r = randomInt(1, height - 2);
+		int c = randomInt(1, width - 2);
+		if (mapArray[r][c] == 0) { // Only place a enemy on a path cell
+			mapArray[r][c] = 4; // 4 represents a enemy
+			enemyCount--;
+		}
+	}
+
+	mapArray[height - 2][width - 1] = 0;
 
 	return 1;
 }
@@ -139,6 +157,9 @@ void Maze::Print_Map() {
 			else if (mapArray[r][c] == 3) {
 				std::cout << "C "; // chest
 			}
+			else if (mapArray[r][c] == 4) {
+				std::cout << "E"; //Enemy
+			}
 			else {
 				std::cout << "  "; // path
 			}
@@ -166,6 +187,12 @@ bool Maze::isWalkable(int r, int c) const {
 	else if (tile == 4) {
 
 		//placeholder call enemy function...
+
+	}
+	else if (tile == mapArray[height - 2][width - 1]) {
+
+		//exit to the maze... 
+
 
 	}
 
