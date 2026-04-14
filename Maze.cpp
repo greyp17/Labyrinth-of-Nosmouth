@@ -3,6 +3,7 @@
 #include "RandomUtil.h"
 #include "MAP.h"
 #include "Global.h"
+#include "LootTable.h"
 #include <vector>
 #include <stack>
 #include <algorithm>
@@ -89,7 +90,7 @@ int Maze::Random_Gen(int mapHeight, int mapWidth) {
 		}
 	}
 	int chestCount;
-	this->setMapArrayValue(1, 1, 2); 
+	//this->setMapArrayValue(1, 1, 2); 
 
 	if (height == 15 && width == 15) {
 		chestCount = 3;
@@ -154,7 +155,21 @@ bool Maze::isValid(int r, int c) const {
 // checks if given coordinates are walkable (not a wall)
 bool Maze::isWalkable(int r, int c) const {
 	if (!isValid(r, c)) return false; // Can't walk outside the world
-	return mapArray[r][c] == 0;       // 0 is path, 1 is wall
+
+	int tile = mapArray[r][c];
+
+	if (tile == 3) {
+
+		//placeholder call chest function...
+
+	}
+	else if (tile == 4) {
+
+		//placeholder call enemy function...
+
+	}
+
+	return (tile == 0 || tile == 3 || tile == 4);       // 0 is path, 1 is wall, 3 is chest, 4 is enemy
 }
 
 
@@ -182,3 +197,9 @@ int Maze::getMazeWidth() {
 	return this->width;
 }
 // end garrison work
+
+void Maze::triggerChest() {
+
+	player.invAdd(generateLoot());
+
+}

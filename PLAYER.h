@@ -11,7 +11,7 @@ private:
 
 public:
 	//Constructor
-	Player(std::string playerName);
+	Player(std::string playerName = "Hero");
 
 	//Member Functions
 	void invAdd(Item* item);

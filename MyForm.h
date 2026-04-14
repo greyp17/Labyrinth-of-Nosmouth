@@ -162,16 +162,19 @@ namespace GUILabyrinthProject {
 		int height = 15, width = 15;
 		nativeMaze->Random_Gen(height, width);
 		this->MazeBox1->Invalidate();
+		PlacePlayer();
 	}
 	private: System::Void button2_click(System::Object^ sender, System::EventArgs^ e) {
 		int height = 25, width = 25;
 		nativeMaze->Random_Gen(height, width);
 		this->MazeBox1->Invalidate();
+		PlacePlayer();
 	}
 	private: System::Void button3_click(System::Object^ sender, System::EventArgs^ e) {
 		int height = 35, width = 35;
 		nativeMaze->Random_Gen(height, width);
 		this->MazeBox1->Invalidate();
+		PlacePlayer();
 	}
 
 	private: void PlacePlayer() {

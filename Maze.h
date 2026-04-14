@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
+#include "PLAYER.h"
 
 // start garrison work
 class Maze {
@@ -23,6 +24,8 @@ public:
 
     std::vector<std::vector<int>> getMapArray() const;
 
+    void triggerChest();
+
 private:
     int height = 0;
     int width = 0;
@@ -30,5 +33,7 @@ private:
     std::vector<std::vector<int>> mapArray;
 
     int visitedCells = 0;
+
+    Player player;
 };
 // end garrison work
