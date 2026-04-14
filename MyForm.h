@@ -22,6 +22,7 @@ namespace GUILabyrinthProject {
 		{
 			InitializeComponent();
 			nativeMaze = new Maze();
+			playerRow = playerCol = -1;
 		
 		}
 
@@ -47,7 +48,8 @@ namespace GUILabyrinthProject {
 	private: System::Windows::Forms::PictureBox^ MazeBox1;
 
 
-
+	private: int playerCol;
+	private: int playerRow;
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -145,6 +147,13 @@ namespace GUILabyrinthProject {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->MazeBox1))->EndInit();
 			this->ResumeLayout(false);
 
+			//keys
+			this->KeyPreview = true;
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyDown);
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->MazeBox1))->EndInit();
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -165,6 +174,83 @@ namespace GUILabyrinthProject {
 		this->MazeBox1->Invalidate();
 	}
 
+	private: void PlacePlayer() {
+		int rows = nativeMaze->getMazeHeight();
+		int cols = nativeMaze->getMazeWidth();
+
+		if (playerRow >= 0 && playerCol >= 0 && nativeMaze->isValid(playerRow, playerCol))
+		{
+			if (nativeMaze->getMapArrayValue(playerRow, playerCol) == 2)
+				nativeMaze->setMapArrayValue(playerRow, playerCol, 0);
+		}
+
+		playerCol = playerRow = -1;
+
+		for (int i = 0; i < rows; i++) {
+
+			for (int j = 0; j < cols; j++) {
+
+				if (nativeMaze->getMapArrayValue(i, j) == 0) {
+
+					playerRow = i;
+					playerCol = j;
+					nativeMaze->setMapArrayValue(i, j, 2); // Place player
+					return;
+				}
+			}
+		}
+
+		if (rows > 0 && cols > 0 && nativeMaze->isValid(0, 0) && nativeMaze->isWalkable(0, 0))
+		{
+			playerRow = 0;
+			playerCol = 0;
+			nativeMaze->setMapArrayValue(0, 0, 2);
+		}
+	
+	}
+
+	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		if (playerRow == -1 || playerCol == -1) {
+			PlacePlayer();
+			this->MazeBox1->Invalidate();
+			return;
+		}
+
+		int newRow = playerRow;
+		int newCol = playerCol;
+
+		switch (e->KeyCode) {
+		case Keys::W:
+			newRow = playerRow - 1;
+			break;
+		case Keys::S:
+			newRow = playerRow + 1;
+			break;
+		case Keys::A:
+			newCol = playerCol - 1;
+			break;
+		case Keys::D:
+			newCol = playerCol + 1;
+			break;
+		default:
+			return; // Ignore other keys
+		}
+
+		if (!nativeMaze->isValid(newRow, newCol)) {
+			return; // Out of bounds
+		}
+		if (!nativeMaze->isWalkable(newRow, newCol)) {
+			return; // Not walkable
+		}
+
+		nativeMaze->setMapArrayValue(playerRow, playerCol, 0); // Clear old position
+		nativeMaze->setMapArrayValue(newRow, newCol, 2); // Move player
+		playerRow = newRow;
+		playerCol = newCol;
+
+		this->MazeBox1->Invalidate();
+	}
+		
 	private : System::Void MazeBox1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 		Graphics^ g = e->Graphics;
 
