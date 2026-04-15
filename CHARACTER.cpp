@@ -16,15 +16,11 @@ void Character::healHealth(int heal) {
 }
 
 void Character::setHealth(int inputHealth) {
-
 	health = inputHealth;
-
 }
 
 void Character::setDefense(int inputDefense) {
-
 	defense = inputDefense;
-
 }
 
 void Character::setDamage(int inputDamage) {

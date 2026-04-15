@@ -101,11 +101,11 @@ int Maze::Random_Gen(int mapHeight, int mapWidth) {
 		enemyCount = randomInt(4, 5);
 	}
 	else if (height == 25 && width == 25) {
-		chestCount = randomInt(5, 6);
-		enemyCount = randomInt(6, 7);
+		chestCount = randomInt(7, 9);
+		enemyCount = randomInt(10, 13);
 	} else {
-		chestCount = randomInt(7, 8);
-		enemyCount = randomInt(8, 9);
+		chestCount = randomInt(12, 18);
+		enemyCount = randomInt(16, 25);
 	}
 
 	// Generate Chests into maze array in empty space
@@ -121,6 +121,7 @@ int Maze::Random_Gen(int mapHeight, int mapWidth) {
 
 	// Generate Enemies into maze array in empty space
 	// std::vector<std::pair<int,int>> enemyPos;
+	enemyPos.clear();
 	while (enemyCount > 0) {
 		int r = randomInt(1, height - 2);
 		int c = randomInt(1, width - 2);

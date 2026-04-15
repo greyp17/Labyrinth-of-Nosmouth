@@ -50,7 +50,7 @@ int combatStart(Player& player, Enemy& enemy) {
 			if (input == "attack") {
 				
 				std::cout << "Player attacks.\n";
-				//randomInt(1, 10);
+				
 				if (player.getAccuracy() >= randomInt(1, 10)) {
 					
 					enemy.takeDamage(player.getDamage());
