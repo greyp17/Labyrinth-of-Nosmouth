@@ -89,6 +89,11 @@ int MAP::RunGame() {
 					playerPosition.second += 1;
 				}
 			}
+			else if (input == "exit") {
+
+				Game_Run = 1;
+
+			}
 			else {
 				std::cout << "Invalid input. Please enter up, down, left, or right.\n";
 			}

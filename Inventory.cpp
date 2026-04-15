@@ -27,6 +27,7 @@ void Inventory::interface(Player& player) {
 		display();
 		std::cout << "Commands: Exit, Inspect, Equip, Stats, Remove\n";
 		std::cin >> input;
+		input = stringLower(input);
 
 		if (input == "exit") {
 
