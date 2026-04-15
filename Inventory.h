@@ -28,7 +28,9 @@ class Inventory {
 		int element(std::string itemName);
 		std::string stringLower(std::string input);
 		int processInput(std::string input);
-
+		void remove(std::string input);
+		std::vector<Item*>& getItems();
+		int processInputSafe(std::string input);
 		
 
 };

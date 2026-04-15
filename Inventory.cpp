@@ -88,24 +88,8 @@ void Inventory::interface(Player& player) {
 			std::cout << "Which item? ";
 			std::cin >> input;
 
-			// With processInput now have the index for the item.
-			inputNum = processInput(input);
-			if (inputNum == -1) {
-				continue;
-			}
-			input = items.at(inputNum)->getName();
-			input = stringLower(input);
-
-			std::cout << "Are you sure you would like to delete " << input << "? ";
-			std::string inp;
-			std::cin >> inp;
-			inp = stringLower(inp);
-
-			if ((inp == "yes") || (inp == "1")) {
-
-				remove(inputNum);
-
-			}
+			// Call remove function...
+			remove(input);
 
 		}
 		else if (input == "stats") {
@@ -143,6 +127,16 @@ void Inventory::interface(Player& player) {
 
 	}
 
+}
+
+void Inventory::remove(std::string input) {
+
+	int inputNum = processInputSafe(input);
+	if (inputNum == -1) {
+		return;
+	}
+
+	remove(inputNum);
 }
 
 void Inventory::display() {
@@ -294,4 +288,35 @@ int Inventory::element(std::string itemName) {
 	}
 
 }
+
+std::vector<Item*>& Inventory::getItems() {
+
+	return items;
+
+}
+
+int Inventory::processInputSafe(std::string input) {
+
+	int inputNum{0};
+
+	try {
+
+		inputNum = std::stoi(input);
+		inputNum -= 1;
+
+		if ((inputNum < 0) || (inputNum >= (int)items.size())) {
+			return -1;
+		}
+
+		return inputNum;
+	}
+	catch (std::invalid_argument&) {
+
+		input = stringLower(input);
+		inputNum = element(input);
+
+		return inputNum; // element already returns index or -1
+	}
+}
+
 

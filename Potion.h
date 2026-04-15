@@ -19,7 +19,7 @@ public:
 	//Polymorphism Functions
 	void inspect() override;
 	void use(Player& player) override;
-	void drink(Character& player);
+	std::string drink(Player& player);
 
 	//Getters
 	

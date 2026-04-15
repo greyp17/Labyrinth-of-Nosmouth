@@ -1,5 +1,6 @@
 #include "POTION.h"
 #include "PLAYER.h"
+#include "Inventory.h"
 #include <iostream>
 
 //Constructor
@@ -15,10 +16,31 @@ Potion::Potion(std::string itemName, std::string itemType) : Item(itemName, item
 void Potion::inspect() {
 	
 	std::string inputType = getType();
+	std::string input = getName();
 
 	//gives stats of potion
-	std::cout << "Potion Effect: " << inputType << "\n";
-	std::cout << "";
+	std::cout << "Potion Effect: ";
+
+	if (input == "healing") {
+
+		std::cout << "Heals the player 15 health.\n";
+
+	}
+	else if (input == "defense") {
+
+		std::cout << "Reduces incoming damage by 5 for 3 turns.\n";
+
+	}
+	else if (input == "accuracy") {
+
+		std::cout << "Increases hit chance by 20% for 3 turns.\n";
+
+	}
+	else if (input == "damage") {
+
+		std::cout << "Adds +4 damage for 3 turns.\n";
+
+	}
 
 }
 
@@ -28,9 +50,8 @@ void Potion::use(Player& player) {
 
 }
 
-void Potion::drink(Character& player) {
-
-	//Tells user they must use in combat...
+std::string Potion::drink(Player& player) {
+	
 	std::string input = getName();
 
 	if (input == "healing") {
@@ -40,21 +61,21 @@ void Potion::drink(Character& player) {
 	}
 	else if (input == "defense") {
 
-		
+		player.setDefense(player.getDefense() + 5);
 
 	}
 	else if (input == "damage") {
 
-		
+		player.setDamage(player.getDamage() + 4);
 
 	}
 	else if (input == "accuracy") {
 
-		
+		player.setAccuracy(player.getAccuracy() + 2);
 
 	}
-	std::cout << "Equipping " << input << "...\n";
-
+	std::cout << "Drinking " << input << " potion...\n";
+	return getName();
 }
 
 //Getters

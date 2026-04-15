@@ -36,6 +36,9 @@ int combatStart(Player& player, Enemy& enemy) {
 	std::cout << "Enemy has " << enemy.getHealth() << " health, " << enemy.getDamage() << " damage, "
 				<< enemy.getAccuracy() << " accuracy.\n";
 
+	std::string effectName = "none";
+	int effect = 0;
+
 	while (invLoop == 1) {
 
 		if (turn == 1) {
@@ -60,15 +63,80 @@ int combatStart(Player& player, Enemy& enemy) {
 					std::cout << "Player misses.\n";
 
 				}
+
+				turn = 0;
+				if (effect > 0) {
+					effect--;
+				}
 				
 			}
 			else if (input == "use") {
 
-				//will list potions you can use...
+				if (effect == 0) {
+
+					std::vector<Item*>& items = player.getInventory().getItems();
+
+					std::cout << "Which potion? healing, damage, accuracy, or defense? ";
+					std::cin >> input;
+					int inputNum = player.getInventory().processInputSafe(input);
+					if (inputNum != -1) {
+
+						effectName = items.at(inputNum)->drink(player);
+
+						player.getInventory().remove(inputNum);
+
+						if (effectName != "healing") {
+
+							effect = 3;
+
+						}
+						else {
+							effectName = "none";
+							if (effect > 0) {
+								effect--;
+							}
+						}
+
+						turn = 0;
+
+					}
+
+				}
+				else {
+
+					std::cout << "A potion effect already active.\n";
+
+				}
 
 			}
 
-			turn = 0;
+			
+
+			if (effect == 0 && effectName != "none") {
+
+				if (effectName == "damage") {
+
+					player.setDamage(player.getDamage() - 4);
+					std::cout << "Damage potion worn off.\n";
+
+				}
+				if (effectName == "defense") {
+
+					player.setDefense(player.getDefense() - 5);
+					std::cout << "Defense potion worn off.\n";
+
+				}
+				else if (effectName == "accuracy") {
+
+					
+					player.setAccuracy(player.getAccuracy() - 2);
+					std::cout << "Accuracy potion worn off.\n";
+
+				}
+
+				effectName = "none";
+
+			}
 
 		}
 		else if (turn == 0) {
@@ -77,7 +145,11 @@ int combatStart(Player& player, Enemy& enemy) {
 			std::cout << "Enemy attacks.\n";
 			if (enemy.getAccuracy() >= randomInt(1, 10)) {
 				
-				player.takeDamage(enemy.getDamage() - player.getDefense());
+				int dmg = enemy.getDamage() - player.getDefense();
+				player.takeDamage(dmg);
+				if (dmg < 0) {
+					dmg = 0;
+				}
 				std::cout << "Enemy hits. Player takes " << (enemy.getDamage() - player.getDefense()) << " damage. Player has " <<
 							player.getHealth() << " health.\n";
 

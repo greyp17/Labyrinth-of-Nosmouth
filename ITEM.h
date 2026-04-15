@@ -23,6 +23,7 @@ class Item {
 		virtual int getDefense() { return 0; }
 		virtual int getDmg() { return 0; }
 		virtual int getAcc() { return 0; }
+		virtual std::string drink(Player& player) { return "none"; }
 		
 
 		//Getters
