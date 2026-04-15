@@ -54,6 +54,11 @@ int combatStart(Player& player, Enemy& enemy) {
 				if (player.getAccuracy() >= randomInt(1, 10)) {
 					
 					enemy.takeDamage(player.getDamage());
+
+					if (enemy.getHealth() < 0) {
+						enemy.setHealth(0);
+					}
+
 					std::cout << "Player hits. Enemy takes " << player.getDamage() << " damage. Enemy has " <<
 						enemy.getHealth() << " health.\n";
 
@@ -146,10 +151,11 @@ int combatStart(Player& player, Enemy& enemy) {
 			if (enemy.getAccuracy() >= randomInt(1, 10)) {
 				
 				int dmg = enemy.getDamage() - player.getDefense();
-				player.takeDamage(dmg);
 				if (dmg < 0) {
 					dmg = 0;
 				}
+				player.takeDamage(dmg);
+				
 				std::cout << "Enemy hits. Player takes " << (enemy.getDamage() - player.getDefense()) << " damage. Player has " <<
 							player.getHealth() << " health.\n";
 
