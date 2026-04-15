@@ -251,7 +251,9 @@ namespace GUILabyrinthProject {
 		playerRow = newRow;
 		playerCol = newCol;
 
+		nativeMaze->MoveEnemies();
 		this->MazeBox1->Invalidate();
+		
 	}
 		
 	private : System::Void MazeBox1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
@@ -282,6 +284,9 @@ namespace GUILabyrinthProject {
 				}
 				else if (val == 4) {
 					brush = System::Drawing::Brushes::Red;
+				}
+				else if (val == 5) {
+					brush = System::Drawing::Brushes::White; //Exit
 				}
 				
 

@@ -92,8 +92,10 @@ int Maze::Random_Gen(int mapHeight, int mapWidth) {
 	}
 	int chestCount;
 	int enemyCount;
+
 	//this->setMapArrayValue(1, 1, 2); 
 
+	//Generate chests and enemies based off of difficulty.
 	if (height == 15 && width == 15) {
 		chestCount = randomInt(3, 4);
 		enemyCount = randomInt(4, 5);
@@ -110,23 +112,29 @@ int Maze::Random_Gen(int mapHeight, int mapWidth) {
 	while (chestCount > 0) {
 		int r = randomInt(1, height - 2);
 		int c = randomInt(1, width - 2);
-		if (mapArray[r][c] == 0) { // Only place a chest on a path cell
+		if (mapArray[r][c] == 0 && !(r == 1 && c == 1)) { // Only place a chest on a path cell
+			
 			mapArray[r][c] = 3; // 3 represents a chest
 			chestCount--;
 		}
 	}
 
 	// Generate Enemies into maze array in empty space
+	// std::vector<std::pair<int,int>> enemyPos;
 	while (enemyCount > 0) {
 		int r = randomInt(1, height - 2);
 		int c = randomInt(1, width - 2);
-		if (mapArray[r][c] == 0) { // Only place a enemy on a path cell
+		if (mapArray[r][c] == 0 && !(r == 1 && c == 1)) { // Only place a enemy on a path cell
 			mapArray[r][c] = 4; // 4 represents a enemy
+
+			// Track enemy pos
+			enemyPos.push_back({r, c});
+
 			enemyCount--;
 		}
 	}
 
-	mapArray[height - 2][width - 1] = 0;
+	mapArray[height - 2][width - 1] = 5; //5 is exit
 
 	return 1;
 }
@@ -174,7 +182,7 @@ bool Maze::isValid(int r, int c) const {
 }
 
 // checks if given coordinates are walkable (not a wall)
-bool Maze::isWalkable(int r, int c) const {
+bool Maze::isWalkable(int r, int c) {
 	if (!isValid(r, c)) return false; // Can't walk outside the world
 
 	int tile = mapArray[r][c];
@@ -186,17 +194,24 @@ bool Maze::isWalkable(int r, int c) const {
 	}
 	else if (tile == 4) {
 
-		//placeholder call enemy function...
+		// Logic to get rid of enemy on enemyPos
+		for (int i = 0; i < enemyPos.size(); i++) {
+			if (enemyPos[i].first == r && enemyPos[i].second == c) {
+				enemyPos.erase(enemyPos.begin() + i);
+				break;
+			}
+		}
+		// Call to start combat
 
 	}
-	else if (tile == mapArray[height - 2][width - 1]) {
+	else if (tile == 5) {
 
 		//exit to the maze... 
 
 
 	}
 
-	return (tile == 0 || tile == 3 || tile == 4);       // 0 is path, 1 is wall, 3 is chest, 4 is enemy
+	return (tile == 0 || tile == 3 || tile == 4 || tile == 5);       // 0 is path, 1 is wall, 3 is chest, 4 is enemy
 }
 
 
@@ -228,5 +243,114 @@ int Maze::getMazeWidth() {
 void Maze::triggerChest() {
 
 	player.invAdd(generateLoot());
+
+}
+/*
+while (enemyCount > 0) {
+	int r = randomInt(1, height - 2);
+	int c = randomInt(1, width - 2);
+	if (mapArray[r][c] == 0) { // Only place a enemy on a path cell
+		mapArray[r][c] = 4; // 4 represents a enemy
+
+		// Track enemy pos
+		enemyPos.push_back({ r, c });
+
+		enemyCount--;
+	}
+}
+*/
+void Maze::MoveEnemies() {
+
+	//placeholder for moving enemies...
+	for (int i{ 0 }; i < enemyPos.size(); i++) {
+
+		int r = enemyPos[i].first;
+		int c = enemyPos[i].second;
+
+		int chance = randomInt(1, 10);
+		int tries = 0;
+
+		// Enemy 70% chance of moving
+		if (chance > 3) {
+			
+			bool find = false;
+
+			while (find == false && tries < 10) {
+
+				int direction = randomInt(1, 4);
+
+				// r is y, c is x
+				// North... 1 up
+				if (direction == 1) {
+
+					if (mapArray[r - 1][c] == 0) {
+						
+						// say that its been found... stop loop
+						find = true;
+						// Change pos on the array
+						mapArray[enemyPos[i].first][enemyPos[i].second] = 0;
+						mapArray[enemyPos[i].first - 1][enemyPos[i].second] = 4;
+						// Keeping track in the enemyPos
+						enemyPos[i].first -= 1;
+
+					}
+
+				}
+				// East... 1 right
+				else if (direction == 2) {
+
+					if (mapArray[r][c + 1] == 0) {
+
+						// say that its been found... stop loop
+						find = true;
+						// Change pos on the array
+						mapArray[enemyPos[i].first][enemyPos[i].second] = 0;
+						mapArray[enemyPos[i].first][enemyPos[i].second + 1] = 4;
+						// Keeping track in the enemyPos
+						enemyPos[i].second += 1;
+
+					}
+
+				}
+				// South... 1 down
+				else if (direction == 3) {
+
+					if (mapArray[r + 1][c] == 0) {
+
+						// say that its been found... stop loop
+						find = true;
+						// Change pos on the array
+						mapArray[enemyPos[i].first][enemyPos[i].second] = 0;
+						mapArray[enemyPos[i].first + 1][enemyPos[i].second] = 4;
+						// Keeping track in the enemyPos
+						enemyPos[i].first += 1;
+
+					}
+
+				}
+				// West... 1 left
+				else {
+
+					if (mapArray[r][c - 1] == 0) {
+
+						// say that its been found... stop loop
+						find = true;
+						// Change pos on the array
+						mapArray[enemyPos[i].first][enemyPos[i].second] = 0;
+						mapArray[enemyPos[i].first][enemyPos[i].second - 1] = 4;
+						// Keeping track in the enemyPos
+						enemyPos[i].second -= 1;
+
+					}
+
+				}
+
+				tries++;
+
+			}
+
+		}
+
+	}
 
 }

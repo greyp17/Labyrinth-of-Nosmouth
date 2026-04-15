@@ -10,7 +10,7 @@ public:
     int Random_Gen(int height, int width);
     void Print_Map();
 
-    bool isWalkable(int r, int c) const;
+    bool isWalkable(int r, int c);
     bool isValid(int r, int c) const;
 
     void setMazeHeight(int h);
@@ -26,6 +26,8 @@ public:
 
     void triggerChest();
 
+    void MoveEnemies();
+
 private:
     int height = 0;
     int width = 0;
@@ -35,5 +37,7 @@ private:
     int visitedCells = 0;
 
     Player player;
+
+    std::vector<std::pair<int, int>> enemyPos;
 };
 // end garrison work
