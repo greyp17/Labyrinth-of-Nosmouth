@@ -248,6 +248,11 @@ namespace GUILabyrinthProject {
 		if (!nativeMaze->isWalkable(newRow, newCol)) {
 			return; // Not walkable
 		}
+		if (nativeMaze->getMapArrayValue(newRow, newCol) == 5) {
+			System::Windows::Forms::MessageBox::Show("you win","you win", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Information);
+			this->MazeBox1->Invalidate();
+			return;
+		}
 
 		nativeMaze->setMapArrayValue(playerRow, playerCol, 0); // Clear old position
 		nativeMaze->setMapArrayValue(newRow, newCol, 2); // Move player
@@ -257,11 +262,7 @@ namespace GUILabyrinthProject {
 		// Check for bottom-right corner (win condition)
 		int rows = nativeMaze->getMazeHeight();
 		int cols = nativeMaze->getMazeWidth();
-		if (rows > 0 && cols > 0 && playerRow == rows - 1 && playerCol == cols - 1) {
-			System::Windows::Forms::MessageBox::Show("You win", "win", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Information);
-			this->MazeBox1->Invalidate();
-			return;
-		}
+		
 
 		nativeMaze->MoveEnemies();
 		this->MazeBox1->Invalidate();
